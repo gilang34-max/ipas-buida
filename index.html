@@ -1,0 +1,1272 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Belajar IPAS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Website belajar mandiri IPAS (Ilmu Pengetahuan Alam dan Sosial)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Konsep tata letak: satu kolom baca yang lebar dan lega, daftar isi sub-bab di samping, satu warna aksen teal. */
+:root{
+  --bg:#fbfaf6; --surface:#ffffff; --fg:#27302d; --muted:#5d6965; --line:#e2e6df;
+  --accent:#0b766b; --accent-fg:#ffffff; --accent-soft:#e2f1ee;
+  --warm:#f6eed9; --warm-fg:#5a4413;
+  --ok:#1d7a3b; --ok-soft:#e1f2e6; --bad:#b0382e; --bad-soft:#f8e4e1;
+  --font:"Nunito",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --header-h:3.5rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111715; --surface:#182120; --fg:#e3eae7; --muted:#9db0aa; --line:#2a3633;
+    --accent:#52d0bd; --accent-fg:#08231f; --accent-soft:#1a3430;
+    --warm:#2e2a1b; --warm-fg:#e8d9a6;
+    --ok:#72d48e; --ok-soft:#16301e; --bad:#f28c82; --bad-soft:#3a1f1c;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111715; --surface:#182120; --fg:#e3eae7; --muted:#9db0aa; --line:#2a3633;
+  --accent:#52d0bd; --accent-fg:#08231f; --accent-soft:#1a3430;
+  --warm:#2e2a1b; --warm-fg:#e8d9a6;
+  --ok:#72d48e; --ok-soft:#16301e; --bad:#f28c82; --bad-soft:#3a1f1c;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{
+  background:var(--bg); color:var(--fg); font-family:var(--font); font-size:17px; line-height:1.8;
+  padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0; -webkit-text-size-adjust:100%;
+}
+@media (min-width:900px){body{font-size:18px}}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+button,input,select{font:inherit;color:inherit}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto}
+
+/* Header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);
+  margin-left:calc(-1*max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1*max(16px,env(safe-area-inset-right,0px)));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  border-bottom:1px solid var(--line)}
+.hdr-in{max-width:1080px;margin:0 auto;height:var(--header-h);display:flex;align-items:center;gap:.5rem}
+.brand{font-weight:800;font-size:1.05rem;letter-spacing:-.01em;background:none;border:0;cursor:pointer;padding:.4rem .2rem;margin-right:auto;display:flex;align-items:center;gap:.55rem}
+.brand-mark{width:1.5rem;height:1.5rem;border-radius:50%;border:2.5px solid var(--accent);display:inline-block;position:relative}
+.brand-mark::after{content:"";position:absolute;inset:.28rem;border-radius:50%;background:var(--accent)}
+.nav-btn{background:none;border:0;cursor:pointer;padding:.45rem .7rem;border-radius:8px;font-weight:700;font-size:.95rem;color:var(--muted)}
+.nav-btn:hover,.nav-btn[aria-current="page"]{color:var(--accent);background:var(--accent-soft)}
+.brand{white-space:nowrap}
+@media (max-width:520px){.nav-home{display:none}.nav-btn{padding:.45rem .55rem}}
+.bar{position:absolute;left:0;bottom:-1px;height:3px;width:100%;background:transparent}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .08s linear}
+
+/* Beranda */
+.hero{padding:clamp(2.5rem,7vw,5rem) 0 2rem;max-width:44rem}
+.eyebrow{font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 .8rem}
+h1,h2,h3,h4{line-height:1.25;text-wrap:balance;letter-spacing:-.015em;margin:0}
+.hero h1{font-size:clamp(2.1rem,6vw,3.4rem);font-weight:800}
+.hero p{color:var(--muted);font-size:1.1rem;margin:1.1rem 0 0}
+.cta{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.6rem;background:var(--accent);color:var(--accent-fg);border:0;border-radius:10px;padding:.75rem 1.2rem;font-weight:800;cursor:pointer}
+.cta:hover{filter:brightness(1.07)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1rem;padding:1rem 0 3rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.card:hover{border-color:var(--accent)}
+.card .no{font-size:.8rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-size:1.3rem;font-weight:800}
+.card p{margin:0;color:var(--muted);font-size:.97rem;line-height:1.65}
+.meta{font-size:.88rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.2rem .9rem;margin-top:auto;padding-top:.4rem}
+.meter{height:6px;background:var(--line);border-radius:99px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.how{border-top:1px solid var(--line);padding:2rem 0 3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1.5rem}
+.how h4{font-size:1rem;font-weight:800;margin-bottom:.3rem}
+.how p{margin:0;color:var(--muted);font-size:.97rem;line-height:1.7}
+
+/* Halaman bab */
+.layout{display:grid;grid-template-columns:15.5rem minmax(0,1fr);gap:3rem;padding:2rem 0 3rem;align-items:start}
+.toc{position:sticky;top:calc(var(--header-h) + env(safe-area-inset-top,0px) + 1.5rem);max-height:calc(100vh - var(--header-h) - 3rem);overflow:auto}
+.toc-h{font-size:.8rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .3rem}
+.toc-t{font-weight:800;font-size:1.05rem;margin:0 0 .9rem;line-height:1.35}
+.toc ol,.tocm ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.1rem}
+.toc-i{display:flex;gap:.6rem;align-items:flex-start;width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:.45rem .6rem;border-radius:8px;font-size:.95rem;line-height:1.45;color:var(--muted)}
+.toc-i:hover{background:var(--accent-soft);color:var(--fg)}
+.toc-i[aria-current="true"]{background:var(--accent-soft);color:var(--accent);font-weight:800}
+.toc-i .n{flex:none;width:1.9rem;font-variant-numeric:tabular-nums;font-weight:700}
+.toc-i .ck{margin-left:auto;flex:none;width:1.1rem;height:1.1rem;border-radius:50%;border:1.5px solid var(--line);margin-top:.18rem}
+.toc-i .ck.on{background:var(--accent);border-color:var(--accent);position:relative}
+.toc-i .ck.on::after{content:"";position:absolute;left:.3rem;top:.12rem;width:.28rem;height:.55rem;border:solid var(--accent-fg);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.toc-sep{height:1px;background:var(--line);margin:.5rem 0}
+.tocm{display:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:1.2rem 0 0}
+.tocm summary{cursor:pointer;padding:.8rem 1rem;font-weight:800;list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:center;font-size:.98rem;line-height:1.4}
+.tocm summary::-webkit-details-marker{display:none}
+.tocm summary::after{content:"";width:.55rem;height:.55rem;border:solid var(--muted);border-width:0 2px 2px 0;transform:rotate(45deg);flex:none;margin-top:-.2rem}
+.tocm[open] summary::after{transform:rotate(-135deg);margin-top:.2rem}
+.tocm ol{padding:0 .5rem .6rem}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:0;padding-top:0}
+  .toc{display:none}
+  .tocm{display:block}
+}
+.art{min-width:0;max-width:44rem}
+.art>h1{font-size:clamp(1.8rem,5vw,2.5rem);font-weight:800;margin:0 0 1.6rem}
+.art p{margin:0 0 1.15rem}
+.art h3{font-size:1.25rem;font-weight:800;margin:2rem 0 .7rem}
+.art ul,.art ol{margin:0 0 1.2rem;padding-left:1.4rem}
+.art li{margin-bottom:.35rem}
+b.t{font-weight:800;color:var(--accent);border-bottom:2px dotted var(--accent);cursor:pointer}
+b.t:hover{background:var(--accent-soft)}
+.tw{overflow-x:auto;margin:1.4rem 0;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:30rem;font-size:.95rem;line-height:1.55}
+th,td{padding:.7rem .9rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:800;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.box{margin:1.6rem 0;padding:1.1rem 1.25rem;border-radius:12px;font-size:.98rem;line-height:1.7}
+.box::before{display:block;font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.35rem}
+.box p{margin:0 0 .6rem}.box p:last-child{margin-bottom:0}
+.box ol,.box ul{margin-bottom:0}
+.tahu{background:var(--warm);color:var(--warm-fg)}.tahu::before{content:"Tahukah kamu?"}
+.ingat{background:var(--accent-soft);color:var(--fg)}.ingat::before{content:"Ingat!";color:var(--accent)}
+.coba{background:transparent;border:1.5px dashed var(--accent)}.coba::before{content:"Coba sendiri";color:var(--accent)}
+.fig{margin:1.6rem 0;padding:1.2rem;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.fig svg{display:block;width:100%;height:auto;max-width:34rem;margin:0 auto}
+.fig figcaption,.fig .cap{font-size:.88rem;color:var(--muted);text-align:center;margin-top:.8rem;line-height:1.5}
+.chain{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem}
+.chain .nd{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.5rem .8rem;text-align:center;font-weight:800;font-size:.95rem;line-height:1.35}
+.chain .nd small{display:block;font-weight:600;color:var(--muted);font-size:.78rem}
+.chain .ar{color:var(--accent);font-weight:800;font-size:1.2rem}
+.pyr{display:flex;flex-direction:column;align-items:center;gap:.35rem}
+.pyr div{border-radius:8px;background:var(--accent-soft);border:1px solid var(--accent);padding:.35rem .6rem;text-align:center;font-weight:700;font-size:.88rem;line-height:1.35;color:var(--fg)}
+.rangkuman{margin:2.2rem 0 0;padding:1.2rem 0 0;border-top:1px solid var(--line)}
+.rangkuman h3{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 .5rem}
+.rangkuman p{margin:0;color:var(--fg)}
+.pager{display:flex;justify-content:space-between;gap:.8rem;margin:2.5rem 0 0;flex-wrap:wrap}
+.pg{display:flex;flex-direction:column;gap:.1rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.8rem 1.1rem;cursor:pointer;text-align:left;min-width:0;flex:1 1 12rem;max-width:100%}
+.pg:hover{border-color:var(--accent)}
+.pg small{font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.pg span{font-weight:700;line-height:1.4;font-size:.97rem}
+.pg.nx{text-align:right;align-items:flex-end}
+.refl{counter-reset:r;list-style:none;padding:0}
+.refl li{counter-increment:r;padding-left:2.4rem;position:relative;margin-bottom:.9rem}
+.refl li::before{content:counter(r);position:absolute;left:0;top:.15rem;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:.9rem;display:flex;align-items:center;justify-content:center;line-height:1}
+
+/* Kuis */
+.qhead{display:flex;justify-content:space-between;gap:1rem;font-size:.9rem;font-weight:700;color:var(--muted);margin-bottom:.8rem}
+.qmeter{margin-bottom:1.6rem}
+.qq{font-size:1.25rem;font-weight:800;line-height:1.5;margin:0 0 1.2rem}
+.opts{display:flex;flex-direction:column;gap:.6rem}
+.opt{display:flex;gap:.8rem;align-items:flex-start;text-align:left;width:100%;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:.8rem 1rem;cursor:pointer;line-height:1.5;font-size:1rem}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .l{flex:none;width:1.7rem;height:1.7rem;border-radius:50%;border:1.5px solid var(--line);font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;line-height:1}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}.opt.ok .l{background:var(--ok);border-color:var(--ok);color:var(--surface)}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}.opt.bad .l{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.opt:disabled{cursor:default;color:var(--fg)}
+.fb{margin-top:1.2rem;padding:1rem 1.2rem;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:.98rem;line-height:1.7}
+.fb strong{display:block;margin-bottom:.2rem}
+.fb.ok strong{color:var(--ok)}.fb.bad strong{color:var(--bad)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:var(--accent-fg);border:0;border-radius:10px;padding:.7rem 1.2rem;font-weight:800;cursor:pointer;margin-top:1.2rem}
+.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.btn-row{display:flex;gap:.7rem;flex-wrap:wrap}
+.score{font-size:clamp(3rem,10vw,4.5rem);font-weight:800;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums;margin:.6rem 0 .4rem}
+.score small{font-size:.4em;color:var(--muted);font-weight:700}
+
+/* Glosarium */
+.gl{padding:2rem 0 3rem;max-width:44rem}
+.gl h1{font-size:clamp(1.9rem,5vw,2.6rem);font-weight:800}
+.gl>p{color:var(--muted);margin:.6rem 0 1.4rem}
+.search{width:100%;padding:.8rem 1rem;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);font-size:1rem}
+.search:focus{border-color:var(--accent);outline:none}
+.az{display:flex;flex-wrap:wrap;gap:.25rem;margin:1.1rem 0 .5rem}
+.az button{min-width:2rem;height:2rem;border:0;border-radius:8px;background:none;cursor:pointer;font-weight:800;color:var(--accent)}
+.az button:hover{background:var(--accent-soft)}
+.gl-l{font-size:1.5rem;font-weight:800;color:var(--accent);margin:2rem 0 .4rem;padding-bottom:.3rem;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--header-h) + env(safe-area-inset-top,0px) + .8rem)}
+.gl-e{padding:.7rem 0;border-bottom:1px solid var(--line)}
+.gl-e:last-child{border-bottom:0}
+.gl-e dt{font-weight:800}
+.gl-e dd{margin:.1rem 0 0;color:var(--muted);font-size:.98rem;line-height:1.7}
+.empty{color:var(--muted);padding:2rem 0}
+
+/* Popover istilah */
+#pop{position:absolute;z-index:40;width:min(21rem,calc(100vw - 2rem));background:var(--surface);color:var(--fg);border:1px solid var(--accent);border-radius:12px;padding:.9rem 1.1rem;box-shadow:0 8px 30px rgba(0,0,0,.18);font-size:.95rem;line-height:1.65}
+#pop strong{display:block;color:var(--accent);font-size:1.02rem;margin-bottom:.15rem}
+#pop p{margin:0}
+
+/* Footer */
+.ftr{border-top:1px solid var(--line);padding:1.6rem 0 2.5rem;font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;align-items:center}
+.ftr button{background:none;border:0;cursor:pointer;color:var(--muted);text-decoration:underline;font-size:.9rem;padding:.3rem}
+.ftr button:hover{color:var(--accent)}
+</style>
+
+<div id="root"></div>
+<script>
+var BAB1 = {
+  no: 1,
+  judul: "Makhluk Hidup dan Lingkungan",
+  desk: "Mengenali ciri makhluk hidup, ekosistem, rantai makanan, dan cara menjaga bumi tetap seimbang.",
+  subs: [
+    {
+      t: "Ciri-ciri Makhluk Hidup",
+      c: `<p>Coba lihat sekelilingmu. Ada ayam yang berkokok di halaman, pohon mangga di depan rumah, dan jamur kecil yang tumbuh di batang kayu lapuk. Semuanya hidup. Di sisi lain ada batu, meja, dan sepeda yang tidak hidup. Bagaimana kita bisa memastikan sebuah benda hidup atau tidak? Para ilmuwan memeriksa apakah benda itu memiliki ciri-ciri makhluk hidup. Ciri-ciri ini dimiliki semua makhluk hidup, dari semut yang sangat kecil sampai pohon beringin yang sangat besar.</p>
+<p>Ciri pertama adalah {{bernapas}}. Bernapas membantu makhluk hidup mengambil oksigen dan mengeluarkan karbon dioksida. Manusia dan hewan darat bernapas dengan paru-paru, ikan dengan insang, dan cacing tanah dengan permukaan kulitnya yang lembap. Tumbuhan bernapas lewat lubang-lubang kecil di daun yang disebut stomata.</p>
+<p>Ciri kedua adalah bergerak. Hewan dapat berpindah tempat, misalnya kucing yang berlari mengejar bola. Tumbuhan juga bergerak, tetapi geraknya tidak berpindah tempat. Akar tumbuh menuju air, batang tumbuh menuju cahaya, dan daun putri malu menutup ketika disentuh.</p>
+<p>Ciri ketiga adalah membutuhkan makanan dan minuman. Hewan dan manusia mencari makanan, sedangkan tumbuhan membuat makanannya sendiri melalui {{fotosintesis}} dengan bantuan cahaya matahari. Makanan dipakai sebagai sumber tenaga dan bahan untuk tumbuh.</p>
+<p>Ciri keempat adalah {{tumbuh}} dan {{berkembang}}. Tumbuh berarti bertambah besar atau bertambah berat, dan bisa diukur, misalnya tinggi badanmu yang bertambah setiap tahun. Berkembang berarti terjadi perubahan bentuk atau kemampuan, misalnya kecebong yang berubah menjadi katak.</p>
+<p>Ciri kelima adalah {{berkembang biak}}, yaitu menghasilkan keturunan agar jenisnya tidak punah. Kucing melahirkan anak, ayam bertelur, pohon pisang mengeluarkan tunas, dan jamur melepaskan spora. Ciri keenam adalah peka terhadap {{rangsangan}}. Ketika tanganmu menyentuh panci panas, kamu langsung menariknya. Itu tandanya tubuhmu menerima dan menanggapi rangsangan.</p>
+<p>Ciri ketujuh adalah mengeluarkan zat sisa atau {{ekskresi}}. Tubuh manusia mengeluarkan keringat, air seni, dan karbon dioksida. Tumbuhan melepaskan uap air, oksigen, dan getah.</p>
+<div class="tw"><table>
+<thead><tr><th>Ciri</th><th>Contoh pada hewan</th><th>Contoh pada tumbuhan</th></tr></thead>
+<tbody>
+<tr><td>Bernapas</td><td>Ikan memakai insang</td><td>Daun memakai stomata</td></tr>
+<tr><td>Bergerak</td><td>Burung terbang</td><td>Akar tumbuh ke arah air</td></tr>
+<tr><td>Memerlukan makanan</td><td>Sapi makan rumput</td><td>Padi membuat makanan sendiri</td></tr>
+<tr><td>Tumbuh dan berkembang</td><td>Anak ayam menjadi ayam dewasa</td><td>Biji menjadi pohon</td></tr>
+<tr><td>Berkembang biak</td><td>Katak bertelur</td><td>Singkong ditanam dari batang</td></tr>
+<tr><td>Peka rangsang</td><td>Cicak lari saat terkejut</td><td>Putri malu menutup daun</td></tr>
+<tr><td>Mengeluarkan zat sisa</td><td>Manusia berkeringat</td><td>Daun menguapkan air</td></tr>
+</tbody></table></div>
+<aside class="box ingat"><p>Sebuah benda disebut makhluk hidup jika memiliki semua ciri tersebut. Mobil dan awan memang bergerak, tetapi keduanya tidak bernapas, tidak tumbuh, dan tidak berkembang biak.</p></aside>
+<aside class="box coba"><p>Letakkan beberapa biji kacang hijau di atas kapas basah dalam dua piring. Taruh satu piring di tempat terang dan satu lagi di dalam kardus gelap. Siram sedikit tiap hari dan ukur tinggi kecambahnya dengan penggaris selama lima hari. Catat hasilnya. Apa yang kamu perhatikan tentang cara tumbuhan merespons cahaya?</p></aside>`,
+      r: `Makhluk hidup memiliki tujuh ciri: bernapas, bergerak, memerlukan makanan, tumbuh dan berkembang, berkembang biak, peka terhadap rangsangan, dan mengeluarkan zat sisa. Hewan dan tumbuhan sama-sama memiliki ciri-ciri itu, hanya caranya berbeda. Benda tak hidup tidak memiliki semua ciri tersebut.`
+    },
+    {
+      t: "Penggolongan Makhluk Hidup",
+      c: `<p>Di bumi ada jutaan jenis makhluk hidup. Agar mudah dipelajari, para ilmuwan mengelompokkannya berdasarkan persamaan ciri. Ini mirip cara ibumu menata dapur: piring bersama piring, sendok bersama sendok. Makhluk hidup digolongkan menjadi hewan, tumbuhan, jamur, dan mikroorganisme.</p>
+<p>{{Hewan}} tidak dapat membuat makanan sendiri sehingga harus makan makhluk hidup lain. Hewan dibagi menjadi hewan bertulang belakang ({{vertebrata}}) dan hewan tak bertulang belakang ({{invertebrata}}). Vertebrata meliputi mamalia (kucing, sapi), unggas atau aves (ayam, elang), reptil (kadal, ular), amfibi (katak), dan ikan. Invertebrata meliputi serangga, cacing, siput, dan ubur-ubur. Berdasarkan makanannya, ada hewan pemakan tumbuhan ({{herbivora}}) seperti kambing, pemakan daging ({{karnivora}}) seperti harimau, dan pemakan keduanya ({{omnivora}}) seperti ayam dan tikus.</p>
+<p>{{Tumbuhan}} umumnya berwarna hijau karena mengandung klorofil, zat yang membantu membuat makanan. Tumbuhan dikelompokkan menjadi tumbuhan berbiji seperti padi, mangga, dan melinjo, serta tumbuhan tak berbiji seperti paku dan {{lumut}}. Tumbuhan memberi kita pangan, kayu, obat, dan oksigen.</p>
+<p>{{Jamur}} berbeda dari tumbuhan karena tidak punya klorofil. Jamur tidak membuat makanan sendiri, melainkan menyerap zat makanan dari sisa makhluk hidup yang sudah mati, misalnya roti basi atau kayu lapuk. Ada jamur yang bermanfaat, seperti jamur tiram yang dimasak, jamur tempe yang mengubah kedelai menjadi tempe, dan ragi untuk membuat roti mengembang. Ada pula yang merugikan, seperti jamur penyebab panu dan kurap.</p>
+<p>{{Mikroorganisme}} adalah makhluk hidup yang sangat kecil dan baru terlihat dengan mikroskop. Contohnya {{bakteri}} dan {{protozoa}}. Bakteri tertentu membantu membuat yoghurt dan membusukkan sampah menjadi tanah subur. Bakteri lain menyebabkan penyakit seperti diare. Karena itu, kita harus rajin mencuci tangan dengan sabun.</p>
+<div class="tw"><table>
+<thead><tr><th>Kelompok</th><th>Ciri utama</th><th>Contoh</th><th>Manfaat</th></tr></thead>
+<tbody>
+<tr><td>Hewan</td><td>Mencari makan sendiri, umumnya bergerak</td><td>Sapi, ayam, ikan lele</td><td>Daging, telur, susu, tenaga</td></tr>
+<tr><td>Tumbuhan</td><td>Berklorofil, membuat makanan sendiri</td><td>Padi, jagung, anggrek</td><td>Pangan, oksigen, obat</td></tr>
+<tr><td>Jamur</td><td>Tanpa klorofil, menyerap makanan</td><td>Jamur tiram, ragi</td><td>Makanan, fermentasi</td></tr>
+<tr><td>Mikroorganisme</td><td>Sangat kecil, perlu mikroskop</td><td>Bakteri, protozoa</td><td>Yoghurt, pengurai sampah</td></tr>
+</tbody></table></div>
+<aside class="box tahu"><p>Satu sendok teh tanah subur bisa mengandung miliaran bakteri. Mereka bekerja diam-diam menguraikan daun yang gugur menjadi zat hara bagi tumbuhan.</p></aside>`,
+      r: `Makhluk hidup digolongkan menjadi hewan, tumbuhan, jamur, dan mikroorganisme berdasarkan persamaan cirinya. Hewan terbagi menjadi vertebrata dan invertebrata. Tumbuhan membuat makanan sendiri, sedangkan jamur tidak. Mikroorganisme ada yang bermanfaat dan ada yang menimbulkan penyakit.`
+    },
+    {
+      t: "Komponen Biotik dan Abiotik dalam Lingkungan",
+      c: `<p>Lingkungan adalah segala sesuatu yang ada di sekitar makhluk hidup dan memengaruhi hidupnya. Lingkungan rumahmu terdiri atas tanaman di halaman, kucing yang tidur di teras, udara yang kamu hirup, dan sinar matahari yang masuk lewat jendela. Semua unsur itu dibagi menjadi dua kelompok: komponen biotik dan komponen abiotik.</p>
+<p>Komponen {{biotik}} adalah semua makhluk hidup di lingkungan itu, yaitu manusia, hewan, tumbuhan, jamur, dan mikroorganisme. Komponen {{abiotik}} adalah benda tak hidup yang ikut menentukan kehidupan, yaitu air, udara, tanah, batu, cahaya matahari, suhu, dan kelembapan. Pada sebuah kolam ikan, ikan, teratai, dan lumut termasuk biotik. Air, lumpur, sinar matahari, dan suhu air termasuk abiotik.</p>
+<p>Kedua komponen ini saling berhubungan erat. Makhluk hidup membutuhkan komponen abiotik. Tumbuhan memerlukan cahaya, air, dan tanah untuk tumbuh. Hewan memerlukan udara dan air untuk bernapas dan minum. Ikan tidak bisa hidup tanpa air, dan kaktus akan layu jika terus-menerus terendam.</p>
+<p>Hubungan itu juga berlaku sebaliknya. Makhluk hidup dapat mengubah keadaan abiotik di sekitarnya. Cacing tanah membuat lubang-lubang kecil sehingga tanah menjadi gembur. Akar pohon menahan tanah agar tidak longsor ketika hujan deras dan menyimpan air sehingga mata air tetap mengalir. Hutan yang rindang membuat udara terasa lebih sejuk dibandingkan lapangan terbuka.</p>
+<p>Kamu juga perlu mengenal beberapa istilah. {{Habitat}} adalah tempat hidup suatu makhluk hidup. Habitat ikan paus adalah laut, sedangkan habitat orangutan adalah hutan hujan. Sekumpulan makhluk hidup sejenis di suatu tempat disebut {{populasi}}, misalnya semua ikan mas di satu kolam. Gabungan banyak populasi yang berbeda jenis di tempat yang sama disebut {{komunitas}}, misalnya ikan, siput, dan tumbuhan air di kolam itu.</p>
+<div class="tw"><table>
+<thead><tr><th>Komponen biotik</th><th>Komponen abiotik</th></tr></thead>
+<tbody>
+<tr><td>Padi, belalang, burung pipit, jamur, bakteri</td><td>Air irigasi, tanah sawah, sinar matahari, udara, suhu</td></tr>
+<tr><td>Ikan, kodok, eceng gondok</td><td>Air sungai, batu, lumpur, arus</td></tr>
+</tbody></table></div>
+<aside class="box ingat"><p>Jika salah satu komponen berubah, komponen lain ikut terpengaruh. Kemarau panjang (abiotik) bisa membuat tanaman layu, dan hewan pemakan tanaman ikut kekurangan makanan.</p></aside>
+<aside class="box coba"><p>Pergilah ke halaman atau taman sekolah bersama temanmu. Buat dua daftar dalam bukumu: semua yang hidup dan semua yang tidak hidup. Ada berapa komponen biotik dan abiotik yang kamu temukan? Hubungan apa yang kamu lihat di antara keduanya?</p></aside>`,
+      r: `Lingkungan terdiri atas komponen biotik (makhluk hidup) dan komponen abiotik (benda tak hidup). Keduanya saling bergantung dan saling memengaruhi. Habitat adalah tempat hidup makhluk hidup, populasi adalah sekelompok makhluk sejenis, dan komunitas adalah gabungan beberapa populasi.`
+    },
+    {
+      t: "Ekosistem di Sekitar Kita",
+      c: `<p>{{Ekosistem}} adalah hubungan saling memengaruhi antara komponen biotik dan abiotik di suatu tempat. Kolam di belakang rumah adalah satu ekosistem, sawah adalah ekosistem lain, dan hutan adalah ekosistem yang jauh lebih besar. Ukurannya boleh kecil, boleh sangat luas, selama unsur hidup dan tak hidupnya saling berhubungan.</p>
+<p>Ekosistem darat berada di daratan. Contohnya hutan hujan tropis, sabana, padang rumput, kebun, dan sawah. Hutan hujan tropis di Sumatra dan Kalimantan sangat lebat, hujannya banyak sepanjang tahun, dan dihuni orangutan, harimau, serta ribuan jenis tumbuhan. Di Nusa Tenggara Timur ada {{sabana}}, yaitu padang rumput luas dengan pohon-pohon yang jarang. Di sanalah komodo hidup. Sawah dan kebun adalah ekosistem buatan karena dibuat dan dirawat oleh manusia.</p>
+<p>Ekosistem air tawar memiliki air dengan kadar garam sangat rendah. Contohnya sungai, danau, rawa, dan kolam. Danau Toba di Sumatra Utara dan Sungai Kapuas di Kalimantan Barat adalah contoh yang terkenal. Penghuninya antara lain ikan mas, ikan lele, teratai, dan eceng gondok. Air sungai yang mengalir deras banyak bersentuhan dengan udara sehingga kaya oksigen, sedangkan air kolam yang tenang cenderung kurang oksigen di bagian dasarnya.</p>
+<p>Ekosistem laut mencakup wilayah yang sangat luas karena sebagian besar permukaan bumi tertutup lautan. Air laut asin. Di laut dangkal terdapat {{terumbu karang}} yang menjadi rumah bagi ribuan jenis ikan, seperti yang ada di Raja Ampat, Papua Barat. Di pantai tertentu tumbuh {{hutan mangrove}} dan padang lamun. Akar mangrove menahan ombak dan menjadi tempat berkembang biak ikan serta kepiting. Laut dalam gelap dan dingin, tetapi tetap dihuni hewan yang menyesuaikan diri dengan keadaan itu.</p>
+<p>Indonesia adalah negara kepulauan dengan iklim tropis. Keadaan ini membuat Indonesia memiliki keanekaragaman hayati yang sangat tinggi, termasuk di antara yang tertinggi di dunia. Karena itu, tugas kita menjaganya sangat besar.</p>
+<div class="tw"><table>
+<thead><tr><th>Jenis ekosistem</th><th>Contoh di Indonesia</th><th>Contoh penghuni</th></tr></thead>
+<tbody>
+<tr><td>Darat</td><td>Hutan hujan Kalimantan, sabana Nusa Tenggara</td><td>Orangutan, komodo, pohon meranti</td></tr>
+<tr><td>Air tawar</td><td>Danau Toba, Sungai Kapuas</td><td>Ikan mas, teratai, eceng gondok</td></tr>
+<tr><td>Laut</td><td>Terumbu karang Raja Ampat, mangrove</td><td>Ikan badut, penyu, kepiting</td></tr>
+</tbody></table></div>
+<aside class="box tahu"><p>Raja Ampat di Papua Barat dikenal sebagai salah satu tempat dengan jenis ikan karang terbanyak di dunia. Ratusan jenis karang tumbuh di perairannya.</p></aside>`,
+      r: `Ekosistem adalah hubungan saling memengaruhi antara makhluk hidup dan lingkungan tak hidupnya. Ada ekosistem darat, air tawar, dan laut, serta ekosistem alami dan buatan. Indonesia kaya akan ekosistem dan keanekaragaman hayati yang harus dijaga.`
+    },
+    {
+      t: "Rantai Makanan dan Jaring-jaring Makanan",
+      c: `<p>Semua makhluk hidup membutuhkan makanan untuk mendapatkan energi. Perpindahan energi dari satu makhluk hidup ke makhluk hidup lain melalui proses makan dan dimakan digambarkan dengan {{rantai makanan}}. Rantai makanan selalu dimulai dari tumbuhan hijau dan ditulis dengan anak panah yang berarti “dimakan oleh”.</p>
+<figure class="fig"><div class="chain"><div class="nd">Padi<small>produsen</small></div><span class="ar" aria-hidden="true">&rarr;</span><div class="nd">Tikus<small>konsumen I</small></div><span class="ar" aria-hidden="true">&rarr;</span><div class="nd">Ular<small>konsumen II</small></div><span class="ar" aria-hidden="true">&rarr;</span><div class="nd">Elang<small>konsumen III</small></div><span class="ar" aria-hidden="true">&rarr;</span><div class="nd">Bakteri<small>pengurai</small></div></div><div class="cap">Contoh rantai makanan di sawah. Anak panah menunjukkan arah perpindahan energi.</div></figure>
+<p>Setiap anggota rantai makanan punya peran. {{Produsen}} adalah makhluk hidup yang membuat makanannya sendiri, yaitu tumbuhan hijau melalui fotosintesis. {{Konsumen}} adalah makhluk hidup yang tidak bisa membuat makanan sendiri. Konsumen tingkat satu memakan produsen, misalnya tikus yang memakan padi. Konsumen tingkat dua memakan konsumen tingkat satu, misalnya ular yang memakan tikus. Konsumen puncak biasanya tidak punya pemangsa alami, seperti elang. {{Pengurai}} seperti bakteri dan jamur menguraikan tubuh makhluk yang mati menjadi zat hara yang kembali ke tanah dan dimanfaatkan lagi oleh tumbuhan.</p>
+<p>Di alam, satu hewan biasanya memakan lebih dari satu jenis makanan. Tikus memakan padi, jagung, dan serangga. Elang memakan ular, tikus, dan burung kecil. Karena itu banyak rantai makanan saling berhubungan dan membentuk {{jaring-jaring makanan}}. Jaring-jaring ini lebih mantap daripada satu rantai. Jika satu jenis makanan berkurang, hewan pemakannya masih bisa memilih makanan lain.</p>
+<p>Gambaran lain adalah {{piramida makanan}}. Jumlah produsen paling banyak sehingga berada di dasar, lalu jumlah konsumen tingkat berikutnya makin sedikit. Hal itu terjadi karena hanya sebagian kecil energi, sekitar sepersepuluh, yang diteruskan ke tingkat berikutnya. Sisanya dipakai untuk hidup atau terbuang sebagai panas. Itulah sebabnya jumlah elang di sawah jauh lebih sedikit daripada jumlah padi.</p>
+<figure class="fig"><div class="pyr" role="img" aria-label="Piramida makanan dari dasar ke puncak: padi, belalang dan tikus, ular, elang"><div style="width:30%">Elang</div><div style="width:50%">Ular</div><div style="width:70%">Tikus, belalang</div><div style="width:92%">Padi dan rumput</div></div><div class="cap">Semakin ke atas, jumlah makhluk hidup dan energi yang tersedia semakin sedikit.</div></figure>
+<aside class="box coba"><p>Buatlah rantai makanan dari makanan yang kamu santap hari ini. Misalnya nasi goreng dengan telur. Telusuri asal-usulnya: ayam makan jagung, jagung adalah tumbuhan. Siapa produsennya, dan siapa konsumennya?</p></aside>`,
+      r: `Rantai makanan menunjukkan perpindahan energi dari produsen ke konsumen dan akhirnya ke pengurai. Banyak rantai makanan yang saling terhubung membentuk jaring-jaring makanan. Dalam piramida makanan, jumlah makhluk hidup semakin sedikit pada tingkat yang lebih tinggi.`
+    },
+    {
+      t: "Adaptasi Makhluk Hidup",
+      c: `<p>Setiap tempat memiliki keadaan yang berbeda. Gurun sangat panas dan kering, kutub sangat dingin, dan laut dalam sangat gelap. Makhluk hidup tidak dapat memilih tempat dengan bebas, jadi mereka harus menyesuaikan diri dengan lingkungannya agar bisa bertahan hidup. Kemampuan menyesuaikan diri ini disebut {{adaptasi}}. Adaptasi terbentuk dalam waktu yang sangat panjang dan diwariskan kepada keturunannya.</p>
+<p>Adaptasi struktur tubuh adalah penyesuaian bentuk tubuh. Kaki bebek berselaput sehingga pandai berenang. Paruh burung pipit pendek dan kuat untuk memecah biji, sedangkan paruh burung kolibri panjang untuk mengisap madu. Leher jerapah panjang agar bisa meraih daun di pohon tinggi. Pada tumbuhan, daun kaktus berubah menjadi duri untuk mengurangi penguapan air. Daun teratai lebar dan tipis agar mengapung dan menangkap cahaya. Bunglon dan belalang ranting punya warna dan bentuk menyerupai lingkungan sehingga sulit dilihat pemangsa. Cara ini disebut kamuflase.</p>
+<p>Adaptasi fisiologi adalah penyesuaian cara kerja tubuh. Ikan laut hidup di air asin dan mampu membuang kelebihan garam dari tubuhnya melalui insang. Unta mampu menyimpan cadangan lemak di punuknya dan mengeluarkan air seni yang sangat pekat sehingga tahan kekurangan air. Manusia berkeringat ketika udara panas agar suhu tubuh turun. Pada tumbuhan, akar mangrove menyerap air dan mengeluarkan kelebihan garam dari daunnya.</p>
+<p>Adaptasi tingkah laku adalah penyesuaian cara berperilaku. Kelelawar tidur siang hari dan mencari makan di malam hari ketika serangga banyak dan pemangsa berkurang. Burung-burung tertentu bermigrasi, yaitu terbang jauh ke tempat yang lebih hangat ketika musim berganti. Gurita menyemprotkan tinta untuk mengelabui musuhnya. Putri malu melipat daunnya ketika disentuh untuk melindungi diri.</p>
+<div class="tw"><table>
+<thead><tr><th>Jenis adaptasi</th><th>Contoh pada hewan</th><th>Contoh pada tumbuhan</th></tr></thead>
+<tbody>
+<tr><td>Struktur tubuh</td><td>Kaki bebek berselaput, leher jerapah panjang</td><td>Duri kaktus, akar napas mangrove</td></tr>
+<tr><td>Fisiologi</td><td>Ikan laut membuang kelebihan garam</td><td>Mangrove mengeluarkan garam lewat daun</td></tr>
+<tr><td>Tingkah laku</td><td>Kelelawar aktif malam hari, burung bermigrasi</td><td>Putri malu menutup daun</td></tr>
+</tbody></table></div>
+<aside class="box tahu"><p>Akar napas mangrove tumbuh menjulang dari lumpur seperti pasak. Tanah pantai berlumpur kekurangan oksigen sehingga akar itu mengambil udara langsung dari atas permukaan.</p></aside>
+<aside class="box ingat"><p>Adaptasi tidak terjadi dalam semalam. Sebuah makhluk hidup tidak bisa langsung memilih berubah, tetapi ciri yang cocok dengan lingkungan membantunya bertahan dan diturunkan kepada anak-anaknya.</p></aside>`,
+      r: `Adaptasi adalah kemampuan makhluk hidup menyesuaikan diri dengan lingkungannya agar dapat bertahan hidup. Adaptasi ada tiga jenis: struktur tubuh, fisiologi, dan tingkah laku. Contohnya kaki bebek berselaput, ikan laut yang membuang garam, dan kelelawar yang aktif pada malam hari.`
+    },
+    {
+      t: "Interaksi Antarmakhluk Hidup",
+      c: `<p>Tidak ada makhluk hidup yang benar-benar hidup sendirian. Setiap hari mereka berhubungan dengan makhluk hidup lain, ada yang saling menolong, ada yang merugikan, dan ada pula yang tidak saling memengaruhi. Hubungan ini disebut interaksi.</p>
+<p>Hubungan dua makhluk hidup berbeda jenis yang hidup berdekatan disebut {{simbiosis}}. Pertama, {{mutualisme}}, yaitu hubungan yang saling menguntungkan. Lebah mendapat madu dari bunga, sementara bunga terbantu penyerbukannya oleh lebah. Burung jalak memakan kutu di tubuh kerbau, sehingga jalak kenyang dan kerbau terbebas dari kutu. Bakteri pada bintil akar tanaman kacang-kacangan membantu tanaman itu mendapat zat hara, dan bakteri mendapat tempat tinggal.</p>
+<p>Kedua, {{komensalisme}}, yaitu hubungan yang menguntungkan satu pihak sedangkan pihak lain tidak dirugikan dan tidak diuntungkan. Anggrek menempel pada batang pohon agar mendapat cahaya matahari yang lebih banyak, sementara pohon tidak terganggu. Ikan remora menempel pada tubuh hiu agar ikut berpindah tempat dan mendapat sisa makanan.</p>
+<p>Ketiga, {{parasitisme}}, yaitu hubungan yang menguntungkan satu pihak dan merugikan pihak lain. Pihak yang untung disebut parasit dan yang rugi disebut inang. Kutu merugikan kucing dengan mengisap darahnya. Benalu menempel di pohon jeruk dan mencuri air serta zat makanan sehingga pohon menjadi kurus. Cacing pita hidup dalam usus dan mengambil makanan dari tubuh inangnya.</p>
+<p>Ada pula hubungan antarmakhluk hidup yang tidak hidup bersama secara dekat. {{Predasi}} adalah hubungan antara pemangsa dan mangsanya, misalnya elang menangkap ayam atau kucing menangkap tikus. Pemangsa membantu menjaga jumlah mangsa tetap seimbang. {{Kompetisi}} adalah persaingan memperebutkan sesuatu yang jumlahnya terbatas, seperti makanan, air, tempat tinggal, atau cahaya. Rumput dan tanaman kecil bersaing dengan pohon besar untuk mendapatkan cahaya, dan dua kucing jantan bisa berebut daerah kekuasaan.</p>
+<div class="tw"><table>
+<thead><tr><th>Interaksi</th><th>Pihak A</th><th>Pihak B</th><th>Contoh</th></tr></thead>
+<tbody>
+<tr><td>Mutualisme</td><td>Untung</td><td>Untung</td><td>Lebah dan bunga</td></tr>
+<tr><td>Komensalisme</td><td>Untung</td><td>Tidak terpengaruh</td><td>Anggrek dan pohon</td></tr>
+<tr><td>Parasitisme</td><td>Untung</td><td>Rugi</td><td>Benalu dan pohon jeruk</td></tr>
+<tr><td>Predasi</td><td>Memangsa</td><td>Dimangsa</td><td>Elang dan ayam</td></tr>
+<tr><td>Kompetisi</td><td>Berebut</td><td>Berebut</td><td>Tanaman berebut cahaya</td></tr>
+</tbody></table></div>
+<aside class="box ingat"><p>Cara mudah menghafalnya: mutualisme berarti sama-sama untung, komensalisme berarti satu untung dan satu biasa saja, parasitisme berarti satu untung dan satu rugi.</p></aside>`,
+      r: `Makhluk hidup berinteraksi satu sama lain. Simbiosis terdiri atas mutualisme (saling menguntungkan), komensalisme (satu untung, satu tidak terpengaruh), dan parasitisme (satu untung, satu rugi). Selain itu ada predasi dan kompetisi yang menjaga keseimbangan alam.`
+    },
+    {
+      t: "Menjaga Keseimbangan dan Kelestarian Lingkungan",
+      c: `<p>Alam yang sehat memiliki keseimbangan. Jumlah pemangsa dan mangsa, jumlah produsen dan konsumen, semuanya berada dalam takaran yang cocok. Contohnya di sawah. Bila elang dan ular terlalu banyak ditangkap orang, jumlah tikus akan melonjak dan padi habis dimakan. Karena itu sebagian petani memelihara burung hantu agar tikus terkendali secara alami. Ini contoh bahwa satu perubahan kecil bisa mengguncang seluruh ekosistem.</p>
+<p>Sayangnya, kegiatan manusia sering merusak keseimbangan itu. Pertama adalah {{pencemaran}}. Pencemaran air terjadi ketika limbah pabrik, deterjen, dan sampah plastik dibuang ke sungai sehingga ikan mati. Pencemaran udara berasal dari asap kendaraan, pabrik, dan kebakaran hutan. Pencemaran tanah berasal dari tumpukan sampah plastik yang sulit terurai dan pestisida yang berlebihan.</p>
+<p>Kedua adalah kerusakan habitat. Penebangan hutan secara liar, pembakaran lahan, dan pembukaan lahan menghilangkan rumah bagi banyak hewan. Akibatnya jumlah hewan menurun dan sebagian terancam punah. Hutan yang gundul juga menyebabkan banjir dan tanah longsor karena tidak ada lagi akar yang menahan tanah dan menyerap air hujan.</p>
+<p>Indonesia memiliki banyak flora dan fauna langka, misalnya harimau sumatra, orangutan, badak jawa, komodo, jalak bali, elang jawa, dan cenderawasih. Contoh tumbuhan langka adalah bunga bangkai dan rafflesia. Makhluk hidup {{langka}} berarti jumlahnya sangat sedikit di alam. Bila tidak dilindungi, mereka bisa {{punah}} dan tidak akan pernah kembali.</p>
+<p>Berbagai upaya {{pelestarian}} sudah dilakukan. Pemerintah membuat cagar alam dan taman nasional, misalnya Taman Nasional Ujung Kulon untuk badak jawa, Taman Nasional Komodo untuk komodo, serta Taman Nasional Gunung Leuser untuk orangutan. Ada pula {{penangkaran}}, yaitu mengembangbiakkan hewan langka di tempat yang aman. Penebangan hutan diperbaiki dengan {{reboisasi}}, yaitu menanam kembali pohon di hutan yang gundul.</p>
+<p>Kita sebagai anak-anak pun bisa berperan. Buanglah sampah pada tempatnya dan pilah sampah. Terapkan prinsip 3R: {{reduce}} (mengurangi sampah), {{reuse}} (memakai ulang), dan {{recycle}} (mendaur ulang). Tanamlah pohon, hematlah air, dan jangan membeli atau memelihara satwa langka yang diambil dari alam.</p>
+<aside class="box ingat"><p>Satwa langka dilindungi undang-undang. Memburu, memperjualbelikan, atau memeliharanya tanpa izin adalah perbuatan yang melanggar hukum.</p></aside>
+<aside class="box coba"><p>Kumpulkan sampah plastik bersih di rumah selama satu minggu, misalnya botol dan wadah bekas. Pikirkan cara memakainya ulang: botol bisa jadi pot tanaman, wadah bisa jadi tempat pensil. Tulis berapa banyak sampah yang berhasil kamu kurangi.</p></aside>`,
+      r: `Alam yang seimbang dapat rusak oleh pencemaran dan kerusakan habitat. Banyak flora dan fauna Indonesia yang langka sehingga perlu dilindungi melalui taman nasional, penangkaran, dan reboisasi. Setiap orang, termasuk anak-anak, dapat membantu dengan menerapkan 3R dan menanam pohon.`
+    }
+  ],
+  rb: [
+    "Makhluk hidup memiliki tujuh ciri: bernapas, bergerak, memerlukan makanan, tumbuh dan berkembang, berkembang biak, peka rangsang, dan mengeluarkan zat sisa.",
+    "Makhluk hidup digolongkan menjadi hewan, tumbuhan, jamur, dan mikroorganisme.",
+    "Lingkungan terdiri atas komponen biotik dan abiotik yang saling memengaruhi. Hubungan keduanya membentuk ekosistem.",
+    "Rantai makanan dimulai dari produsen, diteruskan ke konsumen, dan berakhir pada pengurai. Rantai-rantai itu membentuk jaring-jaring makanan.",
+    "Adaptasi (struktur tubuh, fisiologi, tingkah laku) membantu makhluk hidup bertahan di lingkungannya.",
+    "Interaksi makhluk hidup meliputi mutualisme, komensalisme, parasitisme, predasi, dan kompetisi.",
+    "Kita wajib menjaga keseimbangan alam dengan mencegah pencemaran, melindungi satwa langka, dan menerapkan 3R."
+  ],
+  rf: [
+    "Pilih satu hewan atau tumbuhan di sekitar rumahmu. Ciri-ciri makhluk hidup apa saja yang bisa kamu amati langsung dari makhluk itu?",
+    "Bayangkan semua ular di sebuah sawah tiba-tiba hilang. Apa yang mungkin terjadi pada tikus, padi, dan elang? Jelaskan dengan rantai makanan.",
+    "Tindakan sederhana apa yang bisa kamu lakukan minggu ini untuk menjaga lingkungan sekolah atau rumahmu?"
+  ],
+  kuis: [
+    { q: "Manakah yang BUKAN ciri makhluk hidup?", o: ["Bernapas", "Berkembang biak", "Dapat dipindahkan oleh orang lain", "Peka terhadap rangsangan"], a: 2, p: "Dapat dipindahkan oleh orang lain dimiliki juga oleh benda mati seperti batu dan meja. Tiga pilihan lainnya adalah ciri makhluk hidup." },
+    { q: "Tumbuhan bernapas melalui lubang-lubang kecil pada daun yang disebut ...", o: ["Stomata", "Insang", "Paru-paru", "Kulit"], a: 0, p: "Stomata adalah lubang kecil pada permukaan daun tempat pertukaran udara. Insang dimiliki ikan dan paru-paru dimiliki hewan darat." },
+    { q: "Kelompok makhluk hidup yang tidak punya klorofil dan menyerap makanan dari sisa makhluk hidup mati adalah ...", o: ["Tumbuhan paku", "Jamur", "Lumut", "Alga hijau"], a: 1, p: "Jamur tidak berklorofil sehingga tidak bisa membuat makanan sendiri. Jamur hidup dari bahan organik yang telah mati atau lapuk." },
+    { q: "Di sebuah kolam terdapat ikan, teratai, air, lumpur, dan sinar matahari. Yang termasuk komponen abiotik adalah ...", o: ["Ikan dan teratai", "Ikan dan air", "Teratai dan lumpur", "Air, lumpur, dan sinar matahari"], a: 3, p: "Komponen abiotik adalah benda tak hidup: air, lumpur, dan cahaya matahari. Ikan dan teratai termasuk biotik." },
+    { q: "Rantai makanan yang tersusun benar adalah ...", o: ["Padi → tikus → ular → elang", "Elang → ular → tikus → padi", "Tikus → padi → elang → ular", "Ular → padi → tikus → elang"], a: 0, p: "Rantai makanan dimulai dari produsen (padi). Anak panah menunjukkan arah perpindahan energi: padi dimakan tikus, tikus dimakan ular, ular dimakan elang." },
+    { q: "Kaki bebek berselaput adalah contoh adaptasi ...", o: ["Tingkah laku", "Fisiologi", "Struktur tubuh", "Kamuflase warna"], a: 2, p: "Selaput pada kaki adalah bentuk tubuh yang membantu bebek berenang. Itu termasuk adaptasi struktur tubuh." },
+    { q: "Benalu yang menempel pada pohon jeruk dan mengambil makanan dari pohon itu menunjukkan hubungan ...", o: ["Mutualisme", "Komensalisme", "Predasi", "Parasitisme"], a: 3, p: "Benalu untung, sedangkan pohon jeruk rugi. Hubungan yang satu pihak untung dan pihak lain rugi disebut parasitisme." },
+    { q: "Menanam kembali pohon di hutan yang gundul disebut ...", o: ["Penangkaran", "Reboisasi", "Daur ulang", "Migrasi"], a: 1, p: "Reboisasi adalah penanaman kembali hutan yang rusak. Penangkaran adalah pengembangbiakan hewan langka di tempat aman." }
+  ]
+};
+var BAB2 = {
+  no: 2,
+  judul: "Zat dan Perubahannya",
+  desk: "Memahami wujud, sifat, dan perubahan zat, juga cara memisahkan campuran dan memakai zat dengan aman.",
+  subs: [
+    {
+      t: "Apa Itu Zat? Materi, Massa, dan Volume",
+      c: `<p>Bayangkan semua yang ada di sekitarmu: air minum, buku, meja, udara, bahkan tubuhmu sendiri. Semua itu terbuat dari {{zat}}, yang juga disebut {{materi}}. Dalam IPAS, zat didefinisikan sebagai segala sesuatu yang menempati ruang dan memiliki massa. Dua syarat ini sangat penting. Jika sesuatu tidak menempati ruang dan tidak punya massa, ia bukan zat.</p>
+<p>Mengapa udara disebut zat padahal tidak terlihat? Karena udara menempati ruang dan punya massa. Kamu bisa membuktikannya. Saat meniup balon, balon itu mengembang karena udara memenuhi ruang di dalamnya. Balon yang berisi udara juga lebih berat dibandingkan balon kosong, walaupun bedanya sedikit sekali. Sebaliknya, cahaya, bunyi, dan panas bukan zat. Ketiganya adalah bentuk energi yang tidak punya massa dan tidak menempati ruang.</p>
+<p>{{Massa}} adalah banyaknya zat yang terkandung dalam suatu benda. Massa diukur dengan {{neraca}}, misalnya timbangan dapur atau timbangan pasar. Satuan massa adalah kilogram (kg) dan gram (g). Satu kilogram sama dengan 1.000 gram. Dalam kehidupan sehari-hari, orang sering menyebut “berat badan” padahal yang ditimbang adalah massa tubuh. Di sini kita memakai istilah massa agar tepat.</p>
+<p>{{Volume}} adalah ruang yang ditempati suatu benda. Untuk zat cair, volume diukur memakai {{gelas ukur}} dengan satuan liter (L) atau mililiter (mL). Satu liter sama dengan 1.000 mL, atau sama dengan 1.000 sentimeter kubik (cm³). Untuk benda padat yang bentuknya teratur seperti balok, volume dihitung dengan rumus panjang × lebar × tinggi. Untuk benda yang bentuknya tidak beraturan seperti batu, kita memasukkannya ke dalam gelas ukur berisi air. Kenaikan permukaan air menunjukkan volume batu tersebut.</p>
+<div class="tw"><table>
+<thead><tr><th>Besaran</th><th>Artinya</th><th>Alat ukur</th><th>Satuan</th></tr></thead>
+<tbody>
+<tr><td>Massa</td><td>Banyaknya zat dalam benda</td><td>Neraca</td><td>g, kg</td></tr>
+<tr><td>Volume</td><td>Ruang yang ditempati benda</td><td>Gelas ukur, penggaris</td><td>mL, L, cm³</td></tr>
+</tbody></table></div>
+<aside class="box ingat"><p>Zat = menempati ruang + memiliki massa. Besar kecilnya massa tidak selalu sama dengan besar kecilnya volume. Segenggam besi lebih besar massanya daripada segenggam kapas, padahal volumenya hampir sama.</p></aside>
+<aside class="box coba"><p>Ambil satu gelas bening berisi air sampai setengahnya dan tandai tinggi airnya. Masukkan sebuah batu kecil yang bersih. Perhatikan tinggi air sesudah batu masuk. Mengapa air naik? Bagaimana ini menunjukkan bahwa batu menempati ruang?</p></aside>`,
+      r: `Zat atau materi adalah segala sesuatu yang menempati ruang dan memiliki massa. Massa diukur dengan neraca dalam satuan gram atau kilogram, sedangkan volume diukur dalam mililiter, liter, atau sentimeter kubik. Cahaya, bunyi, dan panas bukan zat.`
+    },
+    {
+      t: "Wujud Zat: Padat, Cair, dan Gas",
+      c: `<p>Zat yang kita jumpai setiap hari berada dalam tiga wujud: {{padat}}, {{cair}}, dan {{gas}}. Wujud itu bisa kita kenali dari bentuk dan volumenya. Contoh yang paling mudah adalah air. Air bisa berwujud padat sebagai es batu, cair sebagai air minum, dan gas sebagai uap air. Zatnya sama, hanya wujudnya yang berbeda.</p>
+<p>Zat padat memiliki bentuk dan volume yang tetap. Sebuah pensil tetap berbentuk pensil walaupun dipindah dari tas ke meja. Zat padat tidak mudah ditekan. Zat cair memiliki volume tetap, tetapi bentuknya berubah mengikuti wadahnya. Satu gelas sirup akan berbentuk gelas jika ada di gelas, dan berbentuk botol jika dituang ke botol, tetapi banyaknya tetap satu gelas. Zat gas tidak memiliki bentuk dan volume yang tetap. Gas mengisi seluruh ruang yang ada. Udara dalam ban sepeda mengikuti bentuk ban, dan gas dapat ditekan sehingga muat lebih banyak di tempat sempit.</p>
+<p>Mengapa wujud zat berbeda-beda? Jawabannya ada pada {{partikel}}, yaitu bagian-bagian yang sangat kecil penyusun zat dan tidak dapat dilihat mata. Pada zat padat, partikel tersusun rapat dan teratur, dan hanya bergetar di tempatnya. Pada zat cair, partikel berdekatan tetapi susunannya tidak teratur sehingga mereka dapat bergeser dan saling meluncur. Pada gas, partikel sangat berjauhan dan bergerak bebas ke segala arah dengan cepat.</p>
+<figure class="fig"><svg viewBox="0 0 600 185" role="img" aria-label="Susunan partikel zat padat rapat dan teratur, zat cair berdekatan tidak teratur, gas berjauhan">
+<g style="fill:none;stroke:var(--line);stroke-width:2"><rect x="10" y="10" width="180" height="135" rx="10"/><rect x="210" y="10" width="180" height="135" rx="10"/><rect x="410" y="10" width="180" height="135" rx="10"/></g>
+<g style="fill:var(--accent)">
+<circle cx="40" cy="38" r="8"/><circle cx="65" cy="38" r="8"/><circle cx="90" cy="38" r="8"/><circle cx="115" cy="38" r="8"/><circle cx="140" cy="38" r="8"/><circle cx="165" cy="38" r="8"/>
+<circle cx="40" cy="63" r="8"/><circle cx="65" cy="63" r="8"/><circle cx="90" cy="63" r="8"/><circle cx="115" cy="63" r="8"/><circle cx="140" cy="63" r="8"/><circle cx="165" cy="63" r="8"/>
+<circle cx="40" cy="88" r="8"/><circle cx="65" cy="88" r="8"/><circle cx="90" cy="88" r="8"/><circle cx="115" cy="88" r="8"/><circle cx="140" cy="88" r="8"/><circle cx="165" cy="88" r="8"/>
+<circle cx="40" cy="113" r="8"/><circle cx="65" cy="113" r="8"/><circle cx="90" cy="113" r="8"/><circle cx="115" cy="113" r="8"/><circle cx="140" cy="113" r="8"/><circle cx="165" cy="113" r="8"/>
+<circle cx="235" cy="50" r="8"/><circle cx="262" cy="36" r="8"/><circle cx="290" cy="60" r="8"/><circle cx="318" cy="38" r="8"/><circle cx="346" cy="58" r="8"/><circle cx="372" cy="40" r="8"/>
+<circle cx="240" cy="84" r="8"/><circle cx="268" cy="98" r="8"/><circle cx="298" cy="86" r="8"/><circle cx="328" cy="102" r="8"/><circle cx="360" cy="86" r="8"/>
+<circle cx="250" cy="124" r="8"/><circle cx="286" cy="124" r="8"/><circle cx="322" cy="128" r="8"/><circle cx="364" cy="122" r="8"/>
+<circle cx="440" cy="38" r="8"/><circle cx="522" cy="52" r="8"/><circle cx="568" cy="30" r="8"/><circle cx="472" cy="94" r="8"/><circle cx="546" cy="108" r="8"/><circle cx="432" cy="126" r="8"/><circle cx="504" cy="128" r="8"/>
+</g>
+<g style="fill:currentColor;font-size:16px;font-weight:700;font-family:inherit" text-anchor="middle"><text x="100" y="172">Padat</text><text x="300" y="172">Cair</text><text x="500" y="172">Gas</text></g>
+</svg><div class="cap">Setiap titik mewakili satu partikel. Semakin ke kanan, partikel semakin berjauhan dan bergerak makin bebas.</div></figure>
+<div class="tw"><table>
+<thead><tr><th>Wujud</th><th>Bentuk</th><th>Volume</th><th>Contoh</th></tr></thead>
+<tbody>
+<tr><td>Padat</td><td>Tetap</td><td>Tetap</td><td>Batu, kayu, es batu</td></tr>
+<tr><td>Cair</td><td>Mengikuti wadah</td><td>Tetap</td><td>Air, minyak goreng, sirup</td></tr>
+<tr><td>Gas</td><td>Mengikuti ruang</td><td>Berubah mengikuti ruang</td><td>Udara, uap air, gas elpiji</td></tr>
+</tbody></table></div>
+<aside class="box tahu"><p>Karena sangat renggang, gas bisa dimampatkan. Itulah sebabnya gas elpiji di tabung kompor dibuat cair dengan tekanan tinggi supaya muat banyak dalam tabung kecil.</p></aside>`,
+      r: `Zat memiliki tiga wujud: padat, cair, dan gas. Zat padat memiliki bentuk dan volume tetap, zat cair memiliki volume tetap tetapi bentuknya mengikuti wadah, dan gas mengikuti bentuk dan volume ruang. Perbedaan itu disebabkan oleh susunan dan gerak partikelnya.`
+    },
+    {
+      t: "Sifat-sifat Zat",
+      c: `<p>Setiap zat punya ciri khas yang disebut sifat. Dengan memahami sifat, kita bisa membedakan satu zat dari zat lainnya dan memilih bahan yang cocok untuk membuat sesuatu. Sifat yang dapat diamati tanpa mengubah zat menjadi zat lain disebut sifat fisika.</p>
+<p>Beberapa sifat fisika yang mudah diamati dengan pancaindra adalah warna, bau, rasa, dan wujud. Garam putih dan asin, cuka bening dan berbau menyengat, belerang kuning dan berbau tajam. Ada pula sifat kekerasan. Intan sangat keras sehingga dipakai pada alat pemotong kaca, sedangkan kapur tulis mudah patah. Kelenturan juga merupakan sifat, misalnya karet gelang yang lentur dan kaca yang getas.</p>
+<p>{{Daya larut}} adalah kemampuan suatu zat larut dalam zat lain. Gula dan garam mudah larut dalam air, sedangkan pasir dan minyak tidak. {{Daya hantar}} adalah kemampuan zat menghantarkan panas atau listrik. Logam seperti tembaga menghantarkan listrik dan panas dengan baik, makanya kabel dibuat dari tembaga. Plastik dan karet menghantarkannya dengan buruk, sehingga dipakai untuk membungkus kabel dan gagang panci.</p>
+<p>Sifat lain adalah titik leleh dan {{titik didih}}. Air membeku pada suhu 0 °C dan mendidih pada 100 °C di permukaan laut. Zat lain punya angka berbeda. Minyak goreng baru mendidih di suhu yang jauh lebih tinggi.</p>
+<p>Satu sifat yang penting adalah {{massa jenis}}, yaitu perbandingan massa dengan volume, atau seberapa padat zat itu. Besi massa jenisnya besar, sedangkan kayu massa jenisnya kecil. Benda dengan massa jenis lebih kecil daripada air akan mengapung, dan yang lebih besar akan tenggelam. Itulah sebabnya kayu mengapung dan batu tenggelam. Minyak berada di atas air karena massa jenisnya lebih kecil. Kapal besi yang besar bisa mengapung karena bagian dalamnya berongga berisi udara sehingga massa jenis kapal secara keseluruhan lebih kecil daripada air.</p>
+<div class="tw"><table>
+<thead><tr><th>Sifat</th><th>Artinya</th><th>Contoh</th></tr></thead>
+<tbody>
+<tr><td>Warna, bau, rasa</td><td>Dikenali dengan pancaindra</td><td>Garam putih dan asin</td></tr>
+<tr><td>Kekerasan</td><td>Ketahanan terhadap goresan</td><td>Intan keras, kapur lunak</td></tr>
+<tr><td>Daya larut</td><td>Mudah atau tidaknya larut</td><td>Gula larut, pasir tidak larut</td></tr>
+<tr><td>Daya hantar</td><td>Menghantarkan panas atau listrik</td><td>Tembaga menghantarkan, karet tidak</td></tr>
+<tr><td>Massa jenis</td><td>Massa dibagi volume</td><td>Kayu mengapung, batu tenggelam</td></tr>
+</tbody></table></div>
+<aside class="box ingat"><p>Mengapung atau tenggelamnya benda ditentukan oleh massa jenisnya dibandingkan dengan air, bukan oleh besar kecilnya benda. Kapal besar bisa mengapung, sedangkan paku kecil tenggelam.</p></aside>
+<aside class="box coba"><p>Siapkan semangkuk air dan beberapa benda: paku, kayu kecil, gabus, uang logam, daun kering, dan klip kertas. Tebak dulu apakah masing-masing mengapung atau tenggelam. Masukkan satu per satu lalu cocokkan dengan tebakanmu. Pisahkan hasilnya dalam dua kelompok.</p></aside>`,
+      r: `Sifat fisika zat dapat diamati tanpa mengubah zat itu, misalnya warna, bau, rasa, kekerasan, daya larut, daya hantar, dan titik didih. Massa jenis menunjukkan seberapa padat suatu zat dan menentukan apakah benda mengapung atau tenggelam di air.`
+    },
+    {
+      t: "Perubahan Wujud Zat dan Daur Air",
+      c: `<p>Zat dapat berganti wujud ketika dipanaskan atau didinginkan. Es batu yang dibiarkan di meja akan menjadi air, dan air yang direbus lama-kelamaan menjadi uap. Dalam semua perubahan ini zatnya tetap sama, hanya wujudnya yang berubah. Panas yang dipindahkan itu disebut {{kalor}}.</p>
+<p>Ada enam perubahan wujud. {{Mencair}} adalah perubahan dari padat menjadi cair, contohnya es yang meleleh. {{Membeku}} adalah cair menjadi padat, contohnya air di freezer menjadi es. {{Menguap}} adalah cair menjadi gas, contohnya jemuran yang mengering. {{Mengembun}} adalah gas menjadi cair, contohnya tetes air di luar gelas es teh. {{Menyublim}} adalah padat langsung menjadi gas tanpa melewati wujud cair, contohnya kapur barus yang makin mengecil di lemari pakaian. {{Mengkristal}} adalah gas langsung menjadi padat, contohnya terbentuknya bunga es di dinding freezer.</p>
+<figure class="fig"><div class="chain"><div class="nd">Padat<small>es batu</small></div><div style="text-align:center;font-size:.85rem;line-height:1.5"><span class="ar" aria-hidden="true">&rarr;</span> mencair<br><span class="ar" aria-hidden="true">&larr;</span> membeku</div><div class="nd">Cair<small>air</small></div><div style="text-align:center;font-size:.85rem;line-height:1.5"><span class="ar" aria-hidden="true">&rarr;</span> menguap<br><span class="ar" aria-hidden="true">&larr;</span> mengembun</div><div class="nd">Gas<small>uap air</small></div></div><div class="cap">Padat langsung ke gas: menyublim. Gas langsung ke padat: mengkristal.</div></figure>
+<p>Kapan zat menyerap kalor dan kapan melepasnya? Mencair, menguap, dan menyublim membutuhkan kalor, jadi zat menyerap panas dari sekitarnya. Membeku, mengembun, dan mengkristal melepaskan kalor ke sekitarnya. Itulah sebabnya kamu merasa dingin ketika bajumu basah. Air di bajumu menyerap panas dari tubuh saat menguap.</p>
+<p>Perubahan wujud air membentuk {{daur air}}. Panas matahari menguapkan air laut, sungai, dan danau. Tumbuhan juga melepaskan uap air dari daunnya. Uap naik ke udara yang dingin lalu mengembun menjadi titik-titik air kecil yang membentuk awan. Ketika titik-titik itu semakin banyak dan berat, mereka jatuh sebagai hujan, yang disebut {{presipitasi}}. Air hujan mengalir ke sungai dan meresap ke dalam tanah, lalu kembali ke laut. Siklus ini berputar terus-menerus sehingga persediaan air bumi tidak habis, hanya berpindah tempat dan berganti wujud.</p>
+<figure class="fig"><div class="chain"><div class="nd">Penguapan<small>air laut dan sungai</small></div><span class="ar" aria-hidden="true">&rarr;</span><div class="nd">Pengembunan<small>awan</small></div><span class="ar" aria-hidden="true">&rarr;</span><div class="nd">Hujan<small>presipitasi</small></div><span class="ar" aria-hidden="true">&rarr;</span><div class="nd">Mengalir<small>sungai, laut, tanah</small></div></div><div class="cap">Daur air berulang tanpa henti, digerakkan oleh panas matahari.</div></figure>
+<aside class="box coba"><p>Letakkan beberapa es batu di dalam gelas bening dan biarkan di meja. Perhatikan permukaan luar gelas setelah beberapa menit. Dari mana asalnya tetes air itu? Ingat, air itu bukan merembes dari dalam gelas. Ia berasal dari uap air di udara yang mengembun.</p></aside>`,
+      r: `Zat dapat berubah wujud: mencair, membeku, menguap, mengembun, menyublim, dan mengkristal. Mencair, menguap, dan menyublim menyerap kalor, sedangkan membeku, mengembun, dan mengkristal melepas kalor. Perubahan wujud air di alam membentuk daur air.`
+    },
+    {
+      t: "Perubahan Fisika dan Perubahan Kimia",
+      c: `<p>Zat tidak hanya berubah wujud. Zat dapat pula berubah menjadi zat lain. Para ilmuwan membagi perubahan zat menjadi dua jenis: perubahan fisika dan perubahan kimia.</p>
+<p>{{Perubahan fisika}} adalah perubahan yang tidak menghasilkan zat baru. Yang berubah hanya bentuk, ukuran, atau wujudnya, sedangkan zat penyusunnya tetap sama. Contohnya es mencair menjadi air, gula larut dalam teh, kertas disobek, kawat dilengkungkan, dan kapur barus yang menyublim. Semua zatnya tetap itu-itu saja.</p>
+<p>{{Perubahan kimia}} adalah perubahan yang menghasilkan zat baru yang sifatnya berbeda dari zat semula. Contohnya kertas yang dibakar menjadi abu dan asap. Abu jelas bukan kertas lagi. Besi yang dibiarkan basah di udara akan {{berkarat}}, dan karat itu berbeda dari besinya. Nasi dan sayur yang dibiarkan lama menjadi basi. Telur yang digoreng tidak bisa kembali menjadi telur mentah. Singkong yang diragikan menjadi tape juga contoh perubahan kimia. Proses itu disebut {{fermentasi}}.</p>
+<p>Bagaimana cara mengenali perubahan kimia? Ada beberapa tanda. Pertama, terjadi perubahan warna, seperti kertas menghitam saat terbakar. Kedua, muncul gelembung gas, seperti ketika tablet vitamin dimasukkan ke dalam air. Ketiga, muncul bau baru, seperti bau makanan basi. Keempat, terjadi perubahan suhu, seperti panas pada api unggun. Kelima, terbentuk endapan, yaitu padatan yang muncul di dalam cairan. Biasanya perubahan kimia juga sulit atau tidak bisa dikembalikan seperti semula.</p>
+<div class="tw"><table>
+<thead><tr><th>Perubahan fisika</th><th>Perubahan kimia</th></tr></thead>
+<tbody>
+<tr><td>Tidak terbentuk zat baru</td><td>Terbentuk zat baru</td></tr>
+<tr><td>Es mencair, gula larut dalam air</td><td>Kertas terbakar, besi berkarat</td></tr>
+<tr><td>Membelah kayu, menggunting kain</td><td>Makanan basi, kayu membusuk</td></tr>
+<tr><td>Sering mudah dikembalikan</td><td>Sulit dikembalikan</td></tr>
+</tbody></table></div>
+<aside class="box ingat"><p>Kuncinya ada pada zat baru. Jika zat penyusunnya tetap sama, itu perubahan fisika. Jika terbentuk zat baru dengan sifat berbeda, itu perubahan kimia.</p></aside>
+<aside class="box coba"><p>Lakukan bersama orang dewasa. Masukkan satu sendok teh soda kue (baking soda) ke dalam gelas, lalu tuangkan sedikit cuka. Gelembung gas akan muncul. Gelembung itu adalah zat baru. Apakah ini perubahan fisika atau kimia? Bandingkan dengan melarutkan gula dalam air, yang tidak menghasilkan gelembung dan zat baru.</p></aside>`,
+      r: `Perubahan fisika tidak menghasilkan zat baru, sedangkan perubahan kimia menghasilkan zat baru. Tanda perubahan kimia antara lain perubahan warna, timbul gas, bau baru, perubahan suhu, dan endapan. Contoh perubahan kimia adalah kertas terbakar, besi berkarat, dan makanan basi.`
+    },
+    {
+      t: "Campuran dan Larutan",
+      c: `<p>Dalam kehidupan sehari-hari, kita jarang menemukan zat yang benar-benar murni. Air teh manis, sayur sop, dan udara semuanya berupa {{campuran}}. Campuran terbentuk ketika dua zat atau lebih bergabung tanpa mengubah sifat masing-masing zat. Gula dalam teh masih bersifat manis, dan airnya tetap air. Campuran dapat dipisahkan kembali menjadi zat-zat penyusunnya.</p>
+<p>Berdasarkan keseragamannya, campuran ada dua macam. {{Campuran homogen}} adalah campuran yang bagian-bagiannya tampak seragam dan tidak bisa dibedakan satu sama lain. Contohnya air gula, teh manis, air garam, udara bersih, dan sirup. Campuran homogen yang berupa cairan disebut {{larutan}}. {{Campuran heterogen}} adalah campuran yang masing-masing zatnya masih tampak berbeda. Contohnya pasir dalam air, minyak dalam air, salad buah, nasi goreng, dan kerikil dengan pasir.</p>
+<p>Pada larutan, zat yang melarutkan disebut {{pelarut}} dan zat yang larut disebut {{zat terlarut}}. Pada air gula, airnya adalah pelarut dan gulanya zat terlarut. Pelarut yang paling umum adalah air, sehingga air sering disebut pelarut universal walaupun ada zat yang tidak larut dalam air, seperti minyak dan lilin.</p>
+<p>Apa saja yang membuat zat lebih cepat larut? Ada tiga cara. Pertama, mengaduk, karena aduk membuat partikel gula terus bersentuhan dengan air yang belum jenuh. Kedua, menggunakan air hangat, karena suhu lebih tinggi membuat partikel bergerak lebih aktif. Ketiga, menghaluskan zat, karena butiran yang lebih kecil memiliki permukaan lebih banyak yang bersentuhan dengan pelarut. Itu sebabnya gula pasir lebih cepat larut daripada gula batu. Meski begitu, jumlah zat yang bisa larut punya batas. Kalau pelarut sudah tidak sanggup melarutkan lagi, larutannya disebut jenuh dan sisa zat akan mengendap di dasar.</p>
+<p>Ada pula campuran yang tampak keruh dan akan mengendap jika didiamkan, yang disebut {{suspensi}}. Air sungai yang keruh oleh lumpur dan obat sirup yang harus dikocok dulu sebelum diminum adalah contohnya.</p>
+<div class="tw"><table>
+<thead><tr><th>Jenis campuran</th><th>Ciri</th><th>Contoh</th></tr></thead>
+<tbody>
+<tr><td>Homogen (larutan)</td><td>Seragam, zat tidak terlihat terpisah</td><td>Air gula, air garam, teh manis</td></tr>
+<tr><td>Heterogen</td><td>Zat penyusun terlihat berbeda</td><td>Pasir dan air, nasi goreng</td></tr>
+<tr><td>Suspensi</td><td>Keruh, mengendap jika didiamkan</td><td>Air sungai keruh, sirup obat</td></tr>
+</tbody></table></div>
+<aside class="box coba"><p>Siapkan tiga gelas air. Masukkan satu sendok teh gula, garam, dan pasir ke gelas yang berbeda, lalu aduk. Mana yang tampak menyatu dengan air dan mana yang tidak? Klasifikasikan hasilnya sebagai campuran homogen atau heterogen.</p></aside>`,
+      r: `Campuran adalah gabungan dua zat atau lebih yang tidak kehilangan sifatnya. Campuran homogen tampak seragam, sedangkan campuran heterogen masih terlihat terpisah. Larutan terdiri atas pelarut dan zat terlarut, dan zat lebih cepat larut jika diaduk, dipanaskan, atau dihaluskan.`
+    },
+    {
+      t: "Cara Memisahkan Campuran",
+      c: `<p>Karena zat-zat dalam campuran masih menyimpan sifat aslinya, kita bisa memisahkannya kembali. Caranya dipilih berdasarkan perbedaan sifat zat-zat tersebut, seperti ukuran butir, wujud, titik didih, atau sifat magnet.</p>
+<p>{{Penyaringan}} memisahkan padatan yang tidak larut dari cairan dengan memakai saringan atau kertas saring. Ibu menyaring santan untuk membuang ampas kelapa, dan penyaring kopi menahan ampas sementara air kopi lewat. Prinsipnya, lubang saringan lebih kecil daripada butiran padatan.</p>
+<p>{{Penguapan}} atau pengeringan dipakai untuk memisahkan zat padat yang larut dari cairannya. Air laut dijemur di tambak sehingga airnya menguap dan tersisa garam. Cara ini dipakai oleh petani garam, misalnya di Madura. {{Penyulingan}} atau destilasi memisahkan cairan dari cairan lain atau dari padatan, berdasarkan perbedaan titik didih. Cairan dipanaskan sampai menguap, lalu uapnya didinginkan agar mengembun dan ditampung. Cara ini dipakai untuk membuat air suling dan mengambil minyak atsiri, misalnya minyak kayu putih dan minyak serai wangi, dari daunnya.</p>
+<p>{{Dekantasi}} adalah menuangkan cairan perlahan dari wadah setelah padatan mengendap di dasar. Misalnya saat membuang air bening di atas endapan tepung dalam pembuatan tepung kanji. {{Pengayakan}} memisahkan butiran padat berdasarkan ukuran memakai ayakan, seperti memisahkan kerikil dari pasir atau menyaring tepung agar halus. {{Magnet}} dipakai untuk memisahkan benda yang tertarik magnet, misalnya paku besi dari pasir.</p>
+<p>{{Kromatografi}} memisahkan zat berwarna atau zat lain berdasarkan kecepatan mereka merambat pada kertas atau bahan penyerap. Warna tinta spidol hitam sebenarnya campuran beberapa warna. Ketika air merambat naik pada kertas saring, tiap warna bergerak dengan kecepatan berbeda sehingga terpisah.</p>
+<div class="tw"><table>
+<thead><tr><th>Cara</th><th>Dasar pemisahan</th><th>Contoh</th></tr></thead>
+<tbody>
+<tr><td>Penyaringan</td><td>Ukuran butir padatan</td><td>Menyaring santan, air kopi</td></tr>
+<tr><td>Penguapan</td><td>Zat terlarut tidak menguap</td><td>Garam dari air laut</td></tr>
+<tr><td>Penyulingan</td><td>Titik didih berbeda</td><td>Minyak kayu putih, air suling</td></tr>
+<tr><td>Dekantasi</td><td>Endapan turun ke dasar</td><td>Memisahkan air dari endapan tepung</td></tr>
+<tr><td>Pengayakan</td><td>Ukuran butiran</td><td>Kerikil dari pasir</td></tr>
+<tr><td>Magnet</td><td>Sifat kemagnetan</td><td>Paku dari pasir</td></tr>
+<tr><td>Kromatografi</td><td>Kecepatan merambat zat</td><td>Memisahkan warna tinta</td></tr>
+</tbody></table></div>
+<aside class="box coba"><p>Potong kertas saring atau tisu putih menjadi lajur panjang. Beri titik tinta spidol larut air (hitam atau hijau) sekitar dua sentimeter dari ujung bawah. Celupkan ujung bawah ke dalam air sedikit saja, jangan sampai titik tinta terendam. Tunggu sampai air merambat naik. Warna apa saja yang muncul?</p></aside>`,
+      r: `Campuran dipisahkan berdasarkan perbedaan sifat penyusunnya. Cara yang dipakai antara lain penyaringan, penguapan, penyulingan, dekantasi, pengayakan, magnet, dan kromatografi. Pemilihan cara bergantung pada jenis campuran yang dipisahkan.`
+    },
+    {
+      t: "Zat di Sekitar Kita: Asam, Basa, Aditif, dan Zat Berbahaya",
+      c: `<p>Di dapur dan kamar mandi rumahmu banyak zat yang bisa digolongkan berdasarkan sifat keasamannya. {{Asam}} biasanya rasanya masam, misalnya jeruk nipis, cuka, tomat, dan jeruk. {{Basa}} biasanya terasa licin di kulit dan agak pahit. Sabun, pasta gigi, dan obat maag termasuk basa. Zat yang tidak asam dan tidak basa disebut {{netral}}, seperti air murni.</p>
+<p>Namun, jangan sekali-kali mencicipi zat yang tidak kamu kenal hanya untuk mengetahui sifatnya. Para ilmuwan memakai {{indikator}}, yaitu zat yang berubah warna bergantung pada sifat larutan. Contohnya {{kertas lakmus}}. Lakmus biru berubah menjadi merah dalam asam, dan lakmus merah berubah menjadi biru dalam basa. Kita juga bisa memakai indikator alami. Air rebusan kol ungu atau seduhan bunga telang berwarna biru keunguan, lalu berubah merah muda jika ditetesi air jeruk dan berubah kehijauan jika ditetesi larutan sabun.</p>
+<p>Di dalam makanan dan minuman yang dijual, sering ditambahkan {{zat aditif}}, yaitu bahan yang sengaja ditambahkan untuk tujuan tertentu. Contohnya pewarna agar tampak menarik, pemanis agar manis, penyedap agar gurih, dan {{pengawet}} agar tidak cepat basi. Zat aditif ada yang alami (kunyit untuk warna kuning, daun suji untuk warna hijau) dan ada yang buatan. Zat aditif boleh dipakai selama jenisnya diizinkan dan jumlahnya sesuai takaran. Bahan seperti {{boraks}} dan {{formalin}} sangat berbahaya bila dicampurkan ke makanan dan dilarang. Biasakan membaca label kemasan dan memilih jajanan yang bersih.</p>
+<p>Ada banyak zat berbahaya di rumah, misalnya cairan pembersih lantai, pemutih pakaian, obat nyamuk, bensin, minyak tanah, dan pestisida. Zat itu bisa melukai kulit, merusak mata, atau meracuni bila tertelan atau terhirup. Aturan penggunaannya: baca label dan simbol bahayanya, simpan di tempat tinggi dan tertutup rapat jauh dari jangkauan anak kecil, jangan dipindahkan ke botol bekas minuman, jangan mencampur dua pembersih berbeda, pakailah sarung tangan, dan pastikan ruangan berventilasi baik. Bila terkena kulit atau mata, segera bilas dengan banyak air dan minta tolong orang dewasa.</p>
+<div class="tw"><table>
+<thead><tr><th>Golongan</th><th>Ciri</th><th>Contoh</th><th>Lakmus</th></tr></thead>
+<tbody>
+<tr><td>Asam</td><td>Rasa masam</td><td>Jeruk nipis, cuka, tomat</td><td>Biru menjadi merah</td></tr>
+<tr><td>Basa</td><td>Licin, agak pahit</td><td>Sabun, pasta gigi</td><td>Merah menjadi biru</td></tr>
+<tr><td>Netral</td><td>Tidak asam, tidak basa</td><td>Air murni</td><td>Tidak berubah</td></tr>
+</tbody></table></div>
+<aside class="box ingat"><p>Tidak semua zat di rumah aman untuk dicicipi atau disentuh. Jangan pernah mencampur pemutih dengan pembersih lain karena dapat menghasilkan gas beracun.</p></aside>
+<aside class="box coba"><p>Seduh beberapa bunga telang dengan air panas (minta bantuan orang dewasa) dan tunggu dingin. Bagi menjadi tiga gelas bening. Teteskan air jeruk nipis pada gelas pertama, larutan sabun encer pada gelas kedua, dan biarkan gelas ketiga apa adanya. Amati warna masing-masing. Jangan diminum.</p></aside>`,
+      r: `Zat dapat digolongkan menjadi asam, basa, dan netral, dan sifatnya dapat dikenali dengan indikator seperti kertas lakmus atau bunga telang. Zat aditif ditambahkan ke makanan dengan tujuan tertentu, tetapi bahan seperti boraks dan formalin dilarang. Zat berbahaya di rumah harus disimpan dan dipakai dengan hati-hati.`
+    }
+  ],
+  rb: [
+    "Zat (materi) menempati ruang dan memiliki massa. Massa diukur dengan neraca, volume dengan gelas ukur.",
+    "Zat memiliki tiga wujud: padat, cair, dan gas. Perbedaannya terletak pada susunan dan gerak partikelnya.",
+    "Sifat zat meliputi warna, bau, rasa, kekerasan, daya larut, daya hantar, titik didih, dan massa jenis.",
+    "Wujud zat dapat berubah melalui mencair, membeku, menguap, mengembun, menyublim, dan mengkristal. Air di alam mengalami daur air.",
+    "Perubahan fisika tidak menghasilkan zat baru, sedangkan perubahan kimia menghasilkan zat baru.",
+    "Campuran dapat berupa homogen (larutan) atau heterogen, dan dapat dipisahkan dengan cara yang sesuai dengan sifat penyusunnya.",
+    "Zat di sekitar kita ada yang asam, basa, atau netral. Gunakan zat aditif dan zat berbahaya dengan hati-hati."
+  ],
+  rf: [
+    "Berikan tiga contoh perubahan zat yang kamu lihat di dapur rumahmu. Mana yang termasuk perubahan fisika dan mana yang perubahan kimia? Apa alasannya?",
+    "Mengapa jemuran bisa kering walaupun air tidak dipanaskan sampai mendidih? Hubungkan dengan konsep penguapan dan daur air.",
+    "Jika kamu mendapat segelas campuran pasir, garam, dan air, bagaimana urutan langkah untuk memisahkan ketiganya?"
+  ],
+  kuis: [
+    { q: "Yang termasuk zat adalah ...", o: ["Udara", "Cahaya", "Bunyi", "Panas"], a: 0, p: "Udara menempati ruang dan memiliki massa sehingga termasuk zat. Cahaya, bunyi, dan panas adalah bentuk energi." },
+    { q: "Alat untuk mengukur volume zat cair adalah ...", o: ["Neraca", "Gelas ukur", "Termometer", "Penggaris"], a: 1, p: "Gelas ukur dipakai untuk mengukur volume zat cair. Neraca mengukur massa dan termometer mengukur suhu." },
+    { q: "Susunan partikel yang sangat berjauhan dan bergerak bebas dimiliki oleh ...", o: ["Zat padat", "Zat cair", "Es batu", "Gas"], a: 3, p: "Pada gas, partikel sangat berjauhan sehingga bergerak bebas ke segala arah dan gas mudah ditekan." },
+    { q: "Kapur barus di lemari lama-lama mengecil tanpa menjadi cair. Peristiwa ini disebut ...", o: ["Mencair", "Menguap", "Menyublim", "Mengembun"], a: 2, p: "Menyublim adalah perubahan zat padat langsung menjadi gas tanpa melewati wujud cair." },
+    { q: "Dalam daur air, titik-titik air yang membentuk awan berasal dari ...", o: ["Uap air yang mengembun", "Es yang mencair", "Air hujan yang meresap", "Air tanah yang membeku"], a: 0, p: "Uap air naik ke udara yang dingin lalu mengembun menjadi titik-titik air kecil yang membentuk awan." },
+    { q: "Peristiwa berikut yang merupakan perubahan kimia adalah ...", o: ["Es mencair", "Gula larut dalam air", "Kain digunting", "Kertas dibakar"], a: 3, p: "Kertas yang dibakar menjadi abu dan asap, yaitu zat baru. Tiga pilihan lain tidak membentuk zat baru." },
+    { q: "Garam dapat dipisahkan dari air laut dengan cara ...", o: ["Penyaringan", "Penguapan", "Pengayakan", "Menggunakan magnet"], a: 1, p: "Air laut dijemur sampai airnya menguap sehingga garam tertinggal. Garam larut sehingga tidak bisa disaring." },
+    { q: "Larutan yang mengubah kertas lakmus biru menjadi merah bersifat ...", o: ["Basa", "Netral", "Asam", "Garam"], a: 2, p: "Lakmus biru berubah menjadi merah dalam larutan asam. Dalam larutan basa, lakmus merah berubah menjadi biru." }
+  ]
+};
+var BAB3 = {
+  no: 3,
+  judul: "Energi dan Perubahannya",
+  desk: "Mengenal sumber dan bentuk energi, bagaimana energi berubah, serta cara menghemat energi untuk masa depan.",
+  subs: [
+    {
+      t: "Pengertian Energi dan Mengapa Energi Penting",
+      c: `<p>Saat kamu berlari, kipas angin berputar, atau tanaman tumbuh, ada sesuatu yang membuat semua itu bisa terjadi. Sesuatu itu adalah {{energi}}. Energi adalah kemampuan untuk melakukan {{usaha}}, yaitu menggerakkan, memanaskan, menerangi, atau mengubah sesuatu. Energi tidak bisa dipegang atau dilihat, tetapi kita bisa mengetahuinya dari akibatnya. Ketika lampu menyala, ada energi listrik. Ketika kamu merasa hangat di dekat api, ada energi panas.</p>
+<p>Setiap kegiatan membutuhkan energi. Tubuhmu memperoleh energi dari makanan. Nasi, sayur, dan lauk yang kamu santap diolah menjadi tenaga untuk belajar, bermain, dan bernapas. Sepeda motor dan mobil memperoleh energi dari bensin. Televisi, kulkas, dan setrika memperoleh energi dari listrik. Tumbuhan memperoleh energi dari cahaya matahari untuk membuat makanan lewat fotosintesis.</p>
+<p>Satuan energi adalah {{joule}} (J). Pada label makanan, kamu mungkin pernah melihat satuan kalori atau kilokalori yang juga mengukur energi. Satu kilokalori kira-kira sama dengan 4.200 joule.</p>
+<p>Ada satu aturan penting tentang energi yang disebut {{hukum kekekalan energi}}. Energi tidak bisa diciptakan dan tidak bisa dimusnahkan, tetapi bisa berubah dari satu bentuk ke bentuk lain. Misalnya saat kamu menyalakan lampu, energi listrik berubah menjadi energi cahaya dan sebagian menjadi panas. Energi tidak menghilang, hanya berganti bentuk.</p>
+<p>Sumber energi utama bagi bumi adalah matahari. Cahaya matahari menghangatkan bumi, menggerakkan angin, menguapkan air untuk membentuk hujan, dan menjadi bahan dasar fotosintesis tumbuhan. Makanan yang kita makan, batu bara, dan minyak bumi pun pada awalnya bersumber dari energi matahari yang tersimpan dalam makhluk hidup. Bayangkan jika matahari mendadak mati. Bumi akan menjadi gelap dan beku, dan kehidupan tidak akan bertahan.</p>
+<aside class="box ingat"><p>Energi tidak dapat diciptakan dan tidak dapat dimusnahkan. Energi hanya berubah bentuk dan berpindah dari satu benda ke benda lain.</p></aside>
+<aside class="box coba"><p>Buat daftar lima kegiatan yang kamu lakukan sejak bangun tidur pagi ini. Untuk tiap kegiatan, tulis dari mana energinya berasal. Misalnya menyikat gigi: tenaga dari makanan semalam. Menyalakan lampu: energi listrik dari PLN. Apakah semuanya bisa kamu telusuri?</p></aside>`,
+      r: `Energi adalah kemampuan untuk melakukan usaha dan diukur dalam joule. Energi tidak dapat diciptakan atau dimusnahkan, hanya berubah bentuk. Matahari adalah sumber energi utama bagi kehidupan di bumi.`
+    },
+    {
+      t: "Sumber Energi: Terbarukan dan Tak Terbarukan",
+      c: `<p>Sumber energi adalah benda atau peristiwa yang dapat menghasilkan energi. Berdasarkan ketersediaannya, sumber energi dibagi menjadi dua kelompok: {{energi tak terbarukan}} dan {{energi terbarukan}}.</p>
+<p>Sumber energi tak terbarukan adalah sumber yang jumlahnya terbatas dan tidak dapat digantikan dalam waktu singkat. Yang paling dikenal adalah {{bahan bakar fosil}}, yaitu {{minyak bumi}}, {{batu bara}}, dan {{gas alam}}. Bahan bakar fosil terbentuk dari sisa tumbuhan dan hewan purba yang tertimbun di dalam tanah selama jutaan tahun, tertekan, dan terkena panas bumi. Dari minyak bumi kita memperoleh bensin, solar, dan minyak tanah. Batu bara dipakai untuk membangkitkan listrik. Gas alam menjadi bahan bakar kompor gas elpiji. Karena terbentuknya sangat lama, penggunaan yang berlebihan akan membuat persediaannya habis. Selain itu, pembakarannya menimbulkan asap dan gas yang mencemari udara.</p>
+<p>Sumber energi terbarukan adalah sumber yang tersedia terus-menerus di alam atau dapat pulih dalam waktu singkat. Contohnya adalah energi matahari ({{energi surya}}), angin, air, panas bumi, dan biomassa. Energi matahari dapat diubah menjadi listrik oleh panel surya. Angin yang kencang memutar baling-baling kincir untuk menghasilkan listrik. Aliran air sungai atau air di bendungan menggerakkan turbin pada {{PLTA}} atau pembangkit listrik tenaga air.</p>
+<p>{{Panas bumi}} adalah panas dari dalam bumi. Karena Indonesia memiliki banyak gunung berapi, potensi panas bumi di negeri kita termasuk yang terbesar di dunia. Uap panas dari dalam tanah dipakai untuk memutar turbin, misalnya di Kamojang, Jawa Barat. {{Biomassa}} adalah bahan dari makhluk hidup yang dapat dibakar atau diolah menjadi energi, seperti kayu bakar, kotoran ternak yang diolah menjadi biogas, dan limbah pertanian. Selama tanaman terus ditanam lagi, biomassa akan selalu tersedia.</p>
+<div class="tw"><table>
+<thead><tr><th>Kelompok</th><th>Sumber</th><th>Pemanfaatan</th></tr></thead>
+<tbody>
+<tr><td rowspan="3">Tak terbarukan</td><td>Minyak bumi</td><td>Bensin, solar, minyak tanah</td></tr>
+<tr><td>Batu bara</td><td>Pembangkit listrik</td></tr>
+<tr><td>Gas alam</td><td>Bahan bakar kompor, industri</td></tr>
+<tr><td rowspan="5">Terbarukan</td><td>Matahari</td><td>Panel surya, menjemur pakaian</td></tr>
+<tr><td>Angin</td><td>Kincir angin, perahu layar</td></tr>
+<tr><td>Air</td><td>PLTA, kincir air</td></tr>
+<tr><td>Panas bumi</td><td>Pembangkit listrik panas bumi</td></tr>
+<tr><td>Biomassa</td><td>Biogas, kayu bakar</td></tr>
+</tbody></table></div>
+<aside class="box tahu"><p>Sumber energi terbarukan memang tidak akan habis, tetapi pembangkitnya tetap perlu dibangun dan dirawat. Karena itu, hemat energi tetap penting meskipun sumbernya terbarukan.</p></aside>`,
+      r: `Sumber energi tak terbarukan, seperti minyak bumi, batu bara, dan gas alam, jumlahnya terbatas. Sumber energi terbarukan, seperti matahari, angin, air, panas bumi, dan biomassa, tersedia terus-menerus. Penggunaan energi terbarukan lebih ramah lingkungan.`
+    },
+    {
+      t: "Bentuk-bentuk Energi",
+      c: `<p>Energi hadir dalam banyak bentuk, dan satu bentuk dapat berubah menjadi bentuk lainnya. Mengenal bentuk-bentuk energi akan membantumu memahami berbagai peristiwa di sekitarmu.</p>
+<p>{{Energi kalor}} atau energi panas adalah energi yang membuat benda terasa panas atau hangat. Sumbernya antara lain matahari, api, dan kompor. {{Energi cahaya}} membuat kita bisa melihat. Sumbernya matahari, lampu, dan lilin. {{Energi bunyi}} dihasilkan oleh benda yang bergetar, seperti senar gitar, bedug, dan pita suara. {{Energi listrik}} dihasilkan oleh sumber listrik seperti baterai, aki, dan pembangkit listrik. Energi ini kita pakai setiap hari untuk menyalakan lampu dan alat elektronik.</p>
+<p>{{Energi gerak}} atau energi kinetik dimiliki oleh benda yang sedang bergerak. Bola yang menggelinding, mobil yang melaju, dan angin yang bertiup memiliki energi gerak. Makin cepat benda bergerak dan makin besar massanya, makin besar energi geraknya. Truk besar yang melaju kencang punya energi gerak jauh lebih besar daripada sepeda yang melaju pelan.</p>
+<p>{{Energi kimia}} tersimpan dalam bahan-bahan tertentu dan baru dilepaskan ketika terjadi perubahan kimia. Makanan, bensin, kayu, baterai, dan gas elpiji menyimpan energi kimia. Ketika makanan dicerna, bahan bakar dibakar, atau baterai dipakai, energi kimia dilepaskan menjadi bentuk energi lain.</p>
+<p>{{Energi potensial}} adalah energi yang tersimpan dalam benda karena kedudukan atau keadaannya. Buah kelapa di pohon yang tinggi memiliki energi potensial. Makin tinggi letaknya dan makin besar massanya, makin besar energi potensialnya. Ketika kelapa jatuh, energi potensial berubah menjadi energi gerak. Karet ketapel yang ditarik dan pegas yang ditekan juga menyimpan energi potensial. Air di bendungan yang tinggi memiliki energi potensial yang dimanfaatkan PLTA.</p>
+<div class="tw"><table>
+<thead><tr><th>Bentuk energi</th><th>Sumber atau ciri</th><th>Contoh</th></tr></thead>
+<tbody>
+<tr><td>Kalor (panas)</td><td>Matahari, api</td><td>Kompor, setrika</td></tr>
+<tr><td>Cahaya</td><td>Matahari, lampu</td><td>Senter, layar ponsel</td></tr>
+<tr><td>Bunyi</td><td>Benda bergetar</td><td>Gitar, bedug, speaker</td></tr>
+<tr><td>Listrik</td><td>Baterai, pembangkit</td><td>Lampu, televisi</td></tr>
+<tr><td>Gerak (kinetik)</td><td>Benda yang bergerak</td><td>Sepeda melaju, angin</td></tr>
+<tr><td>Kimia</td><td>Zat yang menyimpan energi</td><td>Makanan, bensin, baterai</td></tr>
+<tr><td>Potensial</td><td>Kedudukan atau bentuk benda</td><td>Kelapa di pohon, ketapel ditarik</td></tr>
+</tbody></table></div>
+<aside class="box coba"><p>Ikat sebuah benda kecil pada tali sepanjang satu meter dan ayunkan seperti bandul. Di titik tertinggi, benda berhenti sejenak dan memiliki energi potensial terbesar. Di titik terendah, benda bergerak paling cepat dan memiliki energi gerak terbesar. Perhatikan bagaimana kedua energi itu bergantian.</p></aside>`,
+      r: `Bentuk-bentuk energi meliputi kalor, cahaya, bunyi, listrik, gerak, kimia, dan potensial. Energi gerak dimiliki benda yang bergerak, sedangkan energi potensial tersimpan karena kedudukan atau keadaan benda. Makanan, bensin, dan baterai menyimpan energi kimia.`
+    },
+    {
+      t: "Perubahan Bentuk Energi",
+      c: `<p>Hampir semua alat yang kita pakai bekerja dengan mengubah satu bentuk energi menjadi bentuk lain. Peristiwa ini disebut {{perubahan energi}}. Sebuah alat yang menerima energi listrik, misalnya, bisa mengubahnya menjadi cahaya, gerak, panas, atau bunyi tergantung fungsi alat itu.</p>
+<p>Pada kipas angin, energi listrik berubah menjadi energi gerak yang memutar baling-baling. Pada lampu, energi listrik berubah menjadi energi cahaya dan sebagian menjadi energi panas. Pada kompor gas, energi kimia dari gas elpiji berubah menjadi energi panas dan cahaya api. Pada baterai senter, energi kimia dalam baterai berubah menjadi energi listrik, lalu menjadi energi cahaya pada lampu senter. Pada pengeras suara, energi listrik berubah menjadi energi bunyi. Pada setrika, energi listrik berubah menjadi energi panas.</p>
+<p>{{Panel surya}} adalah alat yang mengubah energi cahaya matahari menjadi energi listrik. Alat ini dipakai pada lampu jalan tenaga surya dan kalkulator bertenaga surya. Pada tumbuhan, energi cahaya diubah menjadi energi kimia berupa makanan lewat fotosintesis. Tubuh kita mengubah energi kimia dari makanan menjadi energi gerak, energi panas (karena itu tubuh hangat), dan energi lain.</p>
+<p>Contoh perubahan energi yang lebih panjang terjadi di {{PLTA}}. Air yang tertahan di bendungan tinggi memiliki energi potensial. Saat air dialirkan turun, energi potensial berubah menjadi energi gerak yang memutar {{turbin}}. Turbin memutar {{generator}}, yaitu alat yang mengubah energi gerak menjadi energi listrik. Listrik itu kemudian dialirkan melalui kabel ke rumah-rumah.</p>
+<figure class="fig"><div class="chain"><div class="nd">Air di bendungan<small>energi potensial</small></div><span class="ar" aria-hidden="true">&rarr;</span><div class="nd">Turbin berputar<small>energi gerak</small></div><span class="ar" aria-hidden="true">&rarr;</span><div class="nd">Generator<small>energi listrik</small></div><span class="ar" aria-hidden="true">&rarr;</span><div class="nd">Lampu di rumah<small>energi cahaya</small></div></div><div class="cap">Rantai perubahan energi pada pembangkit listrik tenaga air.</div></figure>
+<div class="tw"><table>
+<thead><tr><th>Alat</th><th>Energi awal</th><th>Energi hasil yang diinginkan</th></tr></thead>
+<tbody>
+<tr><td>Kipas angin</td><td>Listrik</td><td>Gerak</td></tr>
+<tr><td>Lampu</td><td>Listrik</td><td>Cahaya (dan panas)</td></tr>
+<tr><td>Kompor gas</td><td>Kimia</td><td>Panas dan cahaya</td></tr>
+<tr><td>Baterai</td><td>Kimia</td><td>Listrik</td></tr>
+<tr><td>Panel surya</td><td>Cahaya</td><td>Listrik</td></tr>
+<tr><td>Speaker</td><td>Listrik</td><td>Bunyi</td></tr>
+</tbody></table></div>
+<aside class="box ingat"><p>Hampir setiap perubahan energi menghasilkan sebagian energi panas yang tidak dikehendaki. Lampu pijar mengubah sebagian besar energinya menjadi panas, itulah sebabnya terasa hangat bila disentuh. Lampu LED lebih hemat karena lebih banyak energi menjadi cahaya.</p></aside>`,
+      r: `Alat-alat bekerja dengan mengubah satu bentuk energi menjadi bentuk lain, misalnya kipas angin mengubah listrik menjadi gerak. Panel surya mengubah cahaya menjadi listrik, sedangkan PLTA mengubah energi potensial air menjadi gerak lalu menjadi listrik. Selalu ada sebagian energi yang berubah menjadi panas.`
+    },
+    {
+      t: "Energi Panas: Suhu dan Perpindahan Kalor",
+      c: `<p>Ketika kamu menyentuh segelas air panas dan segelas air es, kamu bisa merasakan perbedaannya. Ukuran derajat panas atau dinginnya benda disebut {{suhu}}. Suhu diukur dengan {{termometer}} dalam satuan derajat Celcius (°C). Air membeku pada 0 °C dan mendidih pada 100 °C, sedangkan suhu tubuh manusia yang sehat kira-kira 37 °C. Suhu bukan sama dengan kalor. Kalor adalah energi panas yang berpindah, sedangkan suhu hanya menunjukkan seberapa panas benda itu.</p>
+<p>Kalor selalu berpindah dari benda bersuhu tinggi ke benda bersuhu rendah sampai suhu keduanya sama. Es teh akan menjadi hangat jika dibiarkan lama di ruangan karena kalor dari udara berpindah ke minuman. Perpindahan kalor terjadi melalui tiga cara.</p>
+<p>{{Konduksi}} adalah perpindahan kalor melalui zat padat tanpa disertai perpindahan bagian-bagian zatnya. Jika ujung sendok besi dicelupkan ke dalam sup panas, bagian pegangannya ikut menjadi hangat. Kalor merambat dari partikel ke partikel. {{Konveksi}} adalah perpindahan kalor melalui zat cair atau gas yang disertai perpindahan bagian zat tersebut. Saat air direbus, air panas di bawah naik karena menjadi lebih ringan, dan air dingin di atas turun, lalu bergantian terus-menerus. Konveksi juga terjadi pada angin laut dan angin darat. {{Radiasi}} adalah perpindahan kalor tanpa zat perantara. Panas matahari sampai ke bumi lewat ruang hampa antariksa dengan cara ini. Kamu juga merasakan hangat dari api unggun walaupun tidak menyentuhnya.</p>
+<p>Bahan yang mudah menghantarkan panas disebut {{konduktor}} kalor, seperti logam (besi, aluminium, tembaga). Itulah sebabnya panci dibuat dari logam. Bahan yang sulit menghantarkan panas disebut {{isolator}} kalor, seperti kayu, plastik, dan karet. Gagang panci dan sendok sayur dibuat dari plastik atau kayu agar tangan tidak terbakar.</p>
+<div class="tw"><table>
+<thead><tr><th>Cara</th><th>Terjadi pada</th><th>Contoh</th></tr></thead>
+<tbody>
+<tr><td>Konduksi</td><td>Zat padat</td><td>Sendok logam di panci panas</td></tr>
+<tr><td>Konveksi</td><td>Zat cair dan gas</td><td>Air mendidih, asap naik, angin laut</td></tr>
+<tr><td>Radiasi</td><td>Tanpa zat perantara</td><td>Panas matahari, api unggun</td></tr>
+</tbody></table></div>
+<aside class="box coba"><p>Dengan bantuan orang dewasa, siapkan segelas air hangat (jangan sampai panas mendidih). Masukkan sendok logam, sendok kayu, dan sendok plastik secara bersamaan. Setelah dua menit, sentuh bagian atas gagang masing-masing. Sendok mana yang terasa paling hangat? Apa artinya bagi konduktor dan isolator?</p></aside>`,
+      r: `Suhu menunjukkan derajat panas benda dan diukur dengan termometer. Kalor berpindah dari benda bersuhu tinggi ke rendah melalui konduksi, konveksi, dan radiasi. Konduktor menghantarkan panas dengan baik, sedangkan isolator tidak.`
+    },
+    {
+      t: "Energi Cahaya: Sifat, Pemantulan, dan Pembiasan",
+      c: `<p>Tanpa cahaya, kita tidak dapat melihat apa pun. Kita melihat benda karena benda itu memancarkan cahaya sendiri, seperti matahari dan lampu, atau memantulkan cahaya yang mengenainya. Benda yang memancarkan cahaya sendiri disebut sumber cahaya. Benda lain, seperti buku dan pohon, terlihat karena cahaya dari sumber memantul dari permukaannya ke mata kita.</p>
+<p>Cahaya merambat lurus. Karena itu sinar senter terlihat seperti garis lurus di ruangan berdebu. Jika cahaya terhalang benda, terbentuk bayangan di belakang benda itu. Cahaya merambat sangat cepat, sekitar 300.000 kilometer per detik. Sinar matahari memerlukan sekitar delapan menit untuk tiba di bumi.</p>
+<p>Benda dibedakan menurut cara mereka meneruskan cahaya. Benda tembus cahaya (bening), seperti kaca jendela dan plastik bening, meneruskan hampir semua cahaya. Benda yang meneruskan sebagian cahaya, seperti kertas minyak, tampak buram. Benda tidak tembus cahaya, seperti kayu, tembok, dan buku, tidak meneruskan cahaya sehingga membentuk bayangan gelap.</p>
+<p>{{Pemantulan}} adalah peristiwa cahaya memantul ketika mengenai permukaan benda. Pada cermin datar, sudut sinar datang sama dengan sudut sinar pantul. Bayangan pada cermin datar sama besar dengan bendanya, tampak seperti berada di belakang cermin, dan sisi kanan-kirinya tertukar. Permukaan yang halus dan mengilap memantulkan cahaya secara teratur seperti cermin, sedangkan permukaan kasar memantulkan cahaya ke segala arah sehingga tidak membentuk bayangan jelas.</p>
+<p>{{Pembiasan}} adalah pembelokan arah cahaya ketika melewati dua zat bening yang berbeda, misalnya dari udara ke air. Karena pembiasan, sedotan yang dicelupkan ke dalam gelas berisi air tampak patah. Kolam juga tampak lebih dangkal daripada kedalaman sebenarnya. Lensa kacamata dan lensa kamera memanfaatkan pembiasan. Pelangi muncul ketika cahaya matahari dibiaskan dan diuraikan oleh butiran air hujan menjadi warna merah, jingga, kuning, hijau, biru, nila, dan ungu, yang sering diingat sebagai “mejikuhibiniu”.</p>
+<div class="tw"><table>
+<thead><tr><th>Peristiwa</th><th>Penyebab</th><th>Contoh</th></tr></thead>
+<tbody>
+<tr><td>Pemantulan</td><td>Cahaya mengenai permukaan benda</td><td>Cermin, genangan air yang tenang</td></tr>
+<tr><td>Pembiasan</td><td>Cahaya pindah antara dua zat bening</td><td>Sedotan tampak patah, lensa</td></tr>
+<tr><td>Bayangan</td><td>Cahaya terhalang benda tak tembus cahaya</td><td>Bayangan pohon di siang hari</td></tr>
+</tbody></table></div>
+<aside class="box tahu"><p>Matahari jauh sekali dari bumi, tetapi cahayanya cukup cepat sampai dalam waktu sekitar delapan menit. Seandainya matahari mendadak padam, kita baru akan tahu delapan menit kemudian.</p></aside>
+<aside class="box coba"><p>Letakkan sebuah koin di dasar mangkuk kosong. Mundurlah sampai koin itu tepat tidak terlihat karena terhalang tepi mangkuk. Mintalah temanmu menuang air perlahan ke dalam mangkuk tanpa menggeser koin. Apa yang terjadi? Cahaya yang dibiaskan membuat koin muncul kembali.</p></aside>`,
+      r: `Cahaya merambat lurus dan dapat membentuk bayangan. Benda dibedakan menjadi tembus cahaya dan tidak tembus cahaya. Cahaya dapat dipantulkan oleh cermin dan dibiaskan ketika berpindah antara dua zat bening, seperti dari udara ke air.`
+    },
+    {
+      t: "Energi Bunyi dan Energi Listrik",
+      c: `<p>Bunyi berasal dari benda yang bergetar. Jika kamu menyentuh leher saat berbicara, kamu bisa merasakan getaran pita suara. Senar gitar yang dipetik, kulit bedug yang dipukul, dan garpu tala yang diketuk semuanya bergetar. Getaran itu merambat ke telinga kita lewat perantara udara, air, atau benda padat. Bunyi tidak dapat merambat di ruang hampa karena tidak ada zat perantara. Di udara, bunyi merambat dengan kecepatan sekitar 340 meter per detik, lebih lambat daripada cahaya. Karena itu, kita melihat kilat lebih dulu daripada mendengar guntur. Bunyi merambat lebih cepat pada zat padat dan zat cair daripada di udara.</p>
+<p>Bunyi bisa keras atau pelan, dan tinggi atau rendah. Bunyi menjadi keras jika getarannya kuat, dan nada menjadi tinggi jika getarannya cepat. Bunyi dapat dipantulkan. Bunyi yang dipantulkan dinding gua atau tebing terdengar sebagai gema. Kelelawar memanfaatkan pantulan bunyi untuk mengenali benda di sekitarnya pada malam hari. Jagalah telingamu dari bunyi terlalu keras, misalnya dengan mengecilkan volume earphone.</p>
+<p>Energi listrik dapat mengalir lewat kabel sebagai {{arus listrik}}. Agar arus mengalir, diperlukan rangkaian tertutup yang terdiri atas sumber listrik (baterai), penghantar (kabel), dan beban (lampu). Saklar berfungsi membuka dan menutup rangkaian. Jika rangkaian terputus, lampu padam.</p>
+<p>Ada dua cara menyusun lampu dalam rangkaian. Pada {{rangkaian seri}}, lampu dipasang berderet dalam satu jalur. Bila satu lampu putus, semua lampu padam, dan makin banyak lampu, nyalanya makin redup. Pada {{rangkaian paralel}}, lampu dipasang pada jalur bercabang. Bila satu lampu putus, lampu lainnya tetap menyala. Listrik di rumah dipasang secara paralel agar tiap alat bisa dipakai sendiri-sendiri.</p>
+<figure class="fig"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1.2rem">
+<div><svg viewBox="0 0 280 170" role="img" aria-label="Rangkaian seri: baterai dan dua lampu dalam satu jalur"><g style="fill:none;stroke:currentColor;stroke-width:2"><path d="M40,30 H240 V140 H40 Z"/></g>
+<rect x="34" y="72" width="12" height="26" style="fill:var(--surface)"/>
+<g style="stroke:currentColor;stroke-width:3"><line x1="26" y1="78" x2="54" y2="78"/><line x1="32" y1="92" x2="48" y2="92" style="stroke-width:5"/></g>
+<g style="fill:var(--surface);stroke:currentColor;stroke-width:2"><circle cx="110" cy="30" r="16"/><circle cx="180" cy="30" r="16"/></g>
+<g style="stroke:var(--accent);stroke-width:2"><line x1="100" y1="20" x2="120" y2="40"/><line x1="100" y1="40" x2="120" y2="20"/><line x1="170" y1="20" x2="190" y2="40"/><line x1="170" y1="40" x2="190" y2="20"/></g>
+<g style="fill:currentColor;font-size:13px;font-weight:700;font-family:inherit" text-anchor="middle"><text x="110" y="62">Lampu 1</text><text x="180" y="62">Lampu 2</text><text x="140" y="162">Rangkaian seri</text></g></svg></div>
+<div><svg viewBox="0 0 280 170" role="img" aria-label="Rangkaian paralel: baterai dan dua lampu pada jalur bercabang"><g style="fill:none;stroke:currentColor;stroke-width:2"><path d="M40,30 H220 V140 H40 Z"/><path d="M130,30 V140"/></g>
+<rect x="34" y="72" width="12" height="26" style="fill:var(--surface)"/>
+<g style="stroke:currentColor;stroke-width:3"><line x1="26" y1="78" x2="54" y2="78"/><line x1="32" y1="92" x2="48" y2="92" style="stroke-width:5"/></g>
+<g style="fill:var(--surface);stroke:currentColor;stroke-width:2"><circle cx="130" cy="85" r="16"/><circle cx="220" cy="85" r="16"/></g>
+<g style="stroke:var(--accent);stroke-width:2"><line x1="120" y1="75" x2="140" y2="95"/><line x1="120" y1="95" x2="140" y2="75"/><line x1="210" y1="75" x2="230" y2="95"/><line x1="210" y1="95" x2="230" y2="75"/></g>
+<g style="fill:currentColor;font-size:13px;font-weight:700;font-family:inherit" text-anchor="middle"><text x="88" y="115">Lampu 1</text><text x="178" y="115">Lampu 2</text><text x="140" y="162">Rangkaian paralel</text></g></svg></div>
+</div><div class="cap">Garis ganda di sisi kiri adalah baterai. Pada rangkaian seri hanya ada satu jalur arus, sedangkan pada rangkaian paralel arus punya dua jalur.</div></figure>
+<p>Bahan yang mudah dialiri listrik disebut konduktor, misalnya tembaga, aluminium, dan besi. Bahan yang sulit dialiri listrik disebut isolator, misalnya karet, plastik, kayu kering, dan kaca. Kabel listrik terdiri atas kawat tembaga di dalam dan selubung plastik di luar agar aman. Listrik berbahaya. Jangan memasukkan benda logam ke lubang stopkontak, jangan menyentuh alat listrik dengan tangan basah, dan jauhi kabel yang terkelupas.</p>
+<aside class="box ingat"><p>Jangan pernah bereksperimen dengan listrik rumah (PLN). Untuk percobaan, gunakan baterai kecil dan didampingi orang dewasa.</p></aside>`,
+      r: `Bunyi dihasilkan oleh benda yang bergetar dan memerlukan zat perantara untuk merambat. Arus listrik mengalir dalam rangkaian tertutup. Pada rangkaian seri hanya ada satu jalur arus, sedangkan pada rangkaian paralel arus punya jalur bercabang sehingga tiap lampu dapat menyala sendiri.`
+    },
+    {
+      t: "Hemat Energi dan Energi untuk Masa Depan",
+      c: `<p>Setiap hari manusia memakai energi dalam jumlah sangat besar. Sebagian besar listrik di Indonesia saat ini masih dihasilkan dari pembakaran batu bara, dan kendaraan memakai bahan bakar dari minyak bumi. Penggunaan bahan bakar fosil menimbulkan dua masalah. Pertama, persediaannya terbatas dan suatu saat akan habis. Kedua, pembakarannya melepaskan asap dan gas karbon dioksida. Karbon dioksida termasuk {{gas rumah kaca}}, yaitu gas yang menahan panas matahari di atmosfer. Bila jumlahnya berlebihan, suhu bumi meningkat. Gejala ini disebut {{pemanasan global}}, yang dapat mengubah iklim, mencairkan es di kutub, dan menaikkan permukaan laut.</p>
+<p>Karena itu kita perlu melakukan {{hemat energi}}. Kebiasaan sederhana di rumah dan sekolah bisa memberi dampak besar bila dilakukan banyak orang. Matikan lampu, kipas, dan televisi ketika tidak dipakai. Cabut charger dari stopkontak setelah selesai mengisi daya. Manfaatkan cahaya matahari di siang hari dengan membuka tirai dan jendela. Gunakan lampu hemat energi seperti {{LED}}. Jangan membuka pintu kulkas terlalu lama. Pakailah air secukupnya karena memompa air juga membutuhkan listrik. Untuk jarak dekat, berjalan kaki atau bersepeda lebih hemat energi daripada naik kendaraan bermotor, dan naik kendaraan umum lebih hemat daripada naik kendaraan pribadi sendirian.</p>
+<p>Selain berhemat, kita perlu beralih ke energi terbarukan. Di Indonesia sudah ada banyak contohnya. PLTA Jatiluhur, Cirata, dan Saguling di Jawa Barat memanfaatkan air. PLTP Kamojang di Jawa Barat dan pembangkit panas bumi lainnya memanfaatkan uap dari dalam bumi. PLTB Sidrap di Sulawesi Selatan memanfaatkan kincir angin. Di Waduk Cirata dibangun {{PLTS}} terapung, yaitu panel surya yang mengapung di atas air. Di beberapa desa, sungai kecil dimanfaatkan untuk pembangkit listrik mikrohidro yang membuat lampu rumah penduduk menyala. Solar juga dicampur minyak kelapa sawit menjadi biodiesel, sehingga sebagian bahan bakar berasal dari tanaman.</p>
+<p>Energi masa depan masih terus dikembangkan, misalnya kendaraan listrik, baterai penyimpan listrik yang lebih awet, dan pemanfaatan gelombang laut. Anak-anak masa kini akan menjadi penemu dan pengguna teknologi itu. Mulailah dari kebiasaan kecil hari ini agar bumi tetap nyaman bagi generasi berikutnya.</p>
+<div class="tw"><table>
+<thead><tr><th>Di mana</th><th>Kebiasaan hemat energi</th></tr></thead>
+<tbody>
+<tr><td>Di rumah</td><td>Matikan lampu yang tidak dipakai, cabut charger, pakai lampu LED</td></tr>
+<tr><td>Di sekolah</td><td>Buka jendela di siang hari, matikan kipas dan proyektor setelah pelajaran</td></tr>
+<tr><td>Di jalan</td><td>Berjalan kaki, bersepeda, naik kendaraan umum</td></tr>
+<tr><td>Di dapur</td><td>Tutup panci saat memasak, jangan lama membuka kulkas</td></tr>
+</tbody></table></div>
+<aside class="box coba"><p>Bersama keluargamu, tempel catatan kecil “Matikan lampu!” di dekat saklar. Selama satu minggu, hitung berapa kali lampu yang tidak dipakai berhasil dimatikan. Apakah kebiasaan barumu berhasil?</p></aside>`,
+      r: `Pembakaran bahan bakar fosil menghabiskan persediaan energi dan menambah gas rumah kaca penyebab pemanasan global. Kita perlu menghemat energi dan beralih ke energi terbarukan, seperti air, panas bumi, angin, dan matahari. Kebiasaan sederhana di rumah dan sekolah dapat membantu.`
+    }
+  ],
+  rb: [
+    "Energi adalah kemampuan melakukan usaha. Energi tidak dapat diciptakan atau dimusnahkan, hanya berubah bentuk.",
+    "Sumber energi terbagi menjadi tak terbarukan (minyak bumi, batu bara, gas alam) dan terbarukan (matahari, angin, air, panas bumi, biomassa).",
+    "Bentuk energi meliputi kalor, cahaya, bunyi, listrik, gerak, kimia, dan potensial.",
+    "Alat-alat mengubah satu bentuk energi menjadi bentuk lain, misalnya kipas angin, lampu, baterai, dan PLTA.",
+    "Kalor berpindah dengan konduksi, konveksi, dan radiasi. Cahaya merambat lurus, dipantulkan, dan dibiaskan.",
+    "Bunyi berasal dari getaran. Rangkaian listrik dapat disusun seri atau paralel.",
+    "Hemat energi dan penggunaan energi terbarukan membantu mengurangi pemanasan global."
+  ],
+  rf: [
+    "Pilih satu alat listrik di rumahmu. Energi apa yang masuk dan energi apa saja yang keluar? Mengapa sebagian energi berubah menjadi panas?",
+    "Mengapa lampu rumah dipasang secara paralel dan bukan seri? Apa yang akan terjadi jika satu lampu putus pada masing-masing rangkaian?",
+    "Rencana hemat energi apa yang bisa kamu jalankan bersama keluarga atau teman sekelas selama satu minggu ke depan?"
+  ],
+  kuis: [
+    { q: "Pernyataan yang benar tentang energi adalah ...", o: ["Energi dapat diciptakan dari ketiadaan", "Energi dapat dimusnahkan sepenuhnya", "Energi dapat berubah dari satu bentuk ke bentuk lain", "Energi hanya ada pada benda yang hidup"], a: 2, p: "Menurut hukum kekekalan energi, energi tidak bisa diciptakan atau dimusnahkan, tetapi dapat berubah bentuk." },
+    { q: "Yang termasuk sumber energi tak terbarukan adalah ...", o: ["Angin", "Batu bara", "Matahari", "Air terjun"], a: 1, p: "Batu bara terbentuk selama jutaan tahun dan jumlahnya terbatas. Angin, matahari, dan air bersifat terbarukan." },
+    { q: "Buah kelapa yang masih berada di puncak pohon memiliki energi ...", o: ["Potensial", "Gerak", "Listrik", "Bunyi"], a: 0, p: "Karena kedudukannya yang tinggi, kelapa memiliki energi potensial. Saat jatuh, energi potensial berubah menjadi energi gerak." },
+    { q: "Perubahan energi yang terjadi pada panel surya adalah ...", o: ["Listrik menjadi cahaya", "Kimia menjadi panas", "Gerak menjadi listrik", "Cahaya menjadi listrik"], a: 3, p: "Panel surya menangkap cahaya matahari dan mengubahnya menjadi energi listrik." },
+    { q: "Panas matahari sampai ke bumi melalui cara perpindahan kalor yang disebut ...", o: ["Konduksi", "Konveksi", "Radiasi", "Pemantulan"], a: 2, p: "Radiasi adalah perpindahan kalor tanpa zat perantara sehingga panas matahari bisa melewati ruang hampa antariksa." },
+    { q: "Sedotan tampak patah ketika dimasukkan ke dalam gelas berisi air karena terjadi ...", o: ["Pembiasan cahaya", "Pemantulan cahaya", "Pembentukan bayangan", "Penyerapan cahaya"], a: 0, p: "Cahaya dibelokkan ketika berpindah dari air ke udara. Peristiwa ini disebut pembiasan." },
+    { q: "Pada rangkaian listrik paralel, jika salah satu lampu putus maka ...", o: ["Semua lampu padam", "Lampu lain tetap menyala", "Lampu lain menyala lebih terang sekali", "Baterai habis seketika"], a: 1, p: "Pada rangkaian paralel arus punya beberapa jalur sehingga lampu lain tetap menyala. Itu sebabnya instalasi rumah dibuat paralel." },
+    { q: "Tindakan berikut yang termasuk hemat energi adalah ...", o: ["Membiarkan TV menyala saat tidur", "Membuka kulkas lama-lama", "Mencabut charger setelah baterai penuh", "Menyalakan lampu di siang hari"], a: 2, p: "Mencabut charger setelah selesai dipakai mencegah pemborosan listrik. Tiga pilihan lain justru memboroskan energi." }
+  ]
+};
+var GLOS = [
+  ["Abiotik", "Komponen lingkungan yang tidak hidup, misalnya air, udara, tanah, cahaya matahari, dan suhu."],
+  ["Adaptasi", "Kemampuan makhluk hidup menyesuaikan diri dengan lingkungannya agar dapat bertahan hidup."],
+  ["Arus listrik", "Aliran muatan listrik yang bergerak melalui penghantar, misalnya kabel, dalam rangkaian tertutup."],
+  ["Asam", "Zat yang rasanya masam dan mengubah kertas lakmus biru menjadi merah, misalnya jeruk nipis dan cuka."],
+  ["Bahan bakar fosil", "Bahan bakar yang terbentuk dari sisa makhluk hidup purba selama jutaan tahun, yaitu minyak bumi, batu bara, dan gas alam."],
+  ["Bakteri", "Makhluk hidup bersel satu yang sangat kecil. Ada yang bermanfaat, misalnya pembuat yoghurt, dan ada yang menimbulkan penyakit."],
+  ["Basa", "Zat yang terasa licin dan agak pahit serta mengubah kertas lakmus merah menjadi biru, misalnya sabun dan pasta gigi."],
+  ["Batu bara", "Bahan bakar fosil berwujud padat berwarna hitam yang banyak dipakai untuk membangkitkan listrik."],
+  ["Berkarat", "Perubahan kimia pada besi yang bereaksi dengan oksigen dan air sehingga terbentuk karat berwarna cokelat kemerahan."],
+  ["Berkembang", "Perubahan bentuk atau kemampuan makhluk hidup selama hidupnya, misalnya kecebong menjadi katak."],
+  ["Berkembang biak", "Menghasilkan keturunan agar jenis makhluk hidup tidak punah."],
+  ["Bernapas", "Mengambil oksigen dan mengeluarkan karbon dioksida. Ciri yang dimiliki semua makhluk hidup."],
+  ["Biodiesel", "Bahan bakar pengganti sebagian solar yang dibuat dari tumbuhan, misalnya minyak kelapa sawit."],
+  ["Biomassa", "Bahan dari makhluk hidup yang dapat diolah menjadi energi, misalnya kayu bakar dan kotoran ternak untuk biogas."],
+  ["Biotik", "Komponen lingkungan yang hidup, yaitu manusia, hewan, tumbuhan, jamur, dan mikroorganisme."],
+  ["Boraks", "Zat kimia berbahaya yang sering dipakai membersihkan atau mengawetkan, tetapi dilarang dicampurkan ke dalam makanan."],
+  ["Cair", "Wujud zat yang volumenya tetap, tetapi bentuknya berubah mengikuti wadahnya, misalnya air."],
+  ["Campuran", "Gabungan dua zat atau lebih yang masing-masing tidak kehilangan sifatnya dan dapat dipisahkan lagi."],
+  ["Campuran heterogen", "Campuran yang zat-zat penyusunnya masih terlihat berbeda, misalnya pasir dalam air."],
+  ["Campuran homogen", "Campuran yang tampak seragam sehingga zat penyusunnya tidak bisa dibedakan, misalnya air gula."],
+  ["Daur air", "Perputaran air di bumi: menguap, mengembun menjadi awan, turun sebagai hujan, lalu mengalir kembali ke laut."],
+  ["Daya hantar", "Kemampuan suatu zat menghantarkan panas atau listrik."],
+  ["Daya larut", "Kemampuan suatu zat untuk larut dalam zat lain."],
+  ["Dekantasi", "Cara memisahkan padatan yang mengendap dari cairan dengan menuang cairan secara perlahan."],
+  ["Ekosistem", "Hubungan saling memengaruhi antara komponen biotik dan abiotik di suatu tempat."],
+  ["Ekskresi", "Pengeluaran zat sisa dari tubuh makhluk hidup, misalnya keringat dan air seni."],
+  ["Energi", "Kemampuan untuk melakukan usaha. Energi tidak dapat diciptakan atau dimusnahkan, hanya berubah bentuk."],
+  ["Energi bunyi", "Energi yang dihasilkan oleh benda yang bergetar dan dapat didengar telinga."],
+  ["Energi cahaya", "Energi yang membuat kita dapat melihat, bersumber dari matahari, lampu, atau api."],
+  ["Energi gerak", "Energi yang dimiliki benda yang sedang bergerak. Disebut juga energi kinetik."],
+  ["Energi kalor", "Energi panas yang berpindah dari benda bersuhu tinggi ke benda bersuhu rendah."],
+  ["Energi kimia", "Energi yang tersimpan dalam zat seperti makanan, bensin, dan baterai, dan dilepaskan saat terjadi perubahan kimia."],
+  ["Energi listrik", "Energi yang dihasilkan oleh aliran muatan listrik, dipakai untuk menyalakan alat-alat elektronik."],
+  ["Energi potensial", "Energi yang tersimpan dalam benda karena kedudukan atau keadaannya, misalnya kelapa di pohon dan karet ketapel yang ditarik."],
+  ["Energi surya", "Energi yang berasal dari cahaya dan panas matahari."],
+  ["Energi tak terbarukan", "Sumber energi yang jumlahnya terbatas dan tidak dapat pulih dalam waktu singkat, misalnya minyak bumi dan batu bara."],
+  ["Energi terbarukan", "Sumber energi yang tersedia terus-menerus atau dapat pulih dengan cepat, misalnya matahari, angin, dan air."],
+  ["Fermentasi", "Perubahan kimia pada bahan makanan oleh jamur atau bakteri, misalnya singkong menjadi tape."],
+  ["Formalin", "Zat kimia berbahaya untuk mengawetkan jenazah dan spesimen. Dilarang dicampurkan ke dalam makanan."],
+  ["Fotosintesis", "Proses tumbuhan hijau membuat makanan dari air dan karbon dioksida dengan bantuan cahaya matahari."],
+  ["Gas", "Wujud zat yang bentuk dan volumenya mengikuti ruang tempatnya berada, misalnya udara dan uap air."],
+  ["Gas alam", "Bahan bakar fosil berwujud gas yang dipakai untuk memasak dan industri."],
+  ["Gas rumah kaca", "Gas di atmosfer, seperti karbon dioksida, yang menahan panas matahari dan membuat bumi lebih hangat."],
+  ["Gelas ukur", "Alat untuk mengukur volume zat cair."],
+  ["Gema", "Bunyi pantul yang terdengar kembali setelah mengenai dinding atau tebing yang jauh."],
+  ["Generator", "Alat yang mengubah energi gerak menjadi energi listrik."],
+  ["Habitat", "Tempat hidup suatu makhluk hidup."],
+  ["Hemat energi", "Kebiasaan memakai energi seperlunya sehingga tidak ada energi yang terbuang percuma."],
+  ["Herbivora", "Hewan pemakan tumbuhan, misalnya kambing dan sapi."],
+  ["Hewan", "Makhluk hidup yang tidak dapat membuat makanan sendiri dan umumnya dapat bergerak berpindah tempat."],
+  ["Hukum kekekalan energi", "Aturan yang menyatakan energi tidak dapat diciptakan atau dimusnahkan, hanya berubah bentuk."],
+  ["Hutan mangrove", "Hutan bakau di tepi pantai dengan akar yang menahan ombak dan menjadi tempat berkembang biak ikan dan kepiting."],
+  ["Indikator", "Zat yang berubah warna untuk menunjukkan sifat asam atau basa suatu larutan."],
+  ["Inang", "Makhluk hidup yang ditumpangi dan dirugikan oleh parasit."],
+  ["Invertebrata", "Hewan yang tidak memiliki tulang belakang, misalnya serangga, cacing, dan siput."],
+  ["Isolator", "Bahan yang sulit menghantarkan panas atau listrik, misalnya karet, plastik, dan kayu kering."],
+  ["Jamur", "Makhluk hidup tanpa klorofil yang menyerap makanan dari sisa makhluk hidup lain, misalnya jamur tiram dan ragi."],
+  ["Jaring-jaring makanan", "Gabungan beberapa rantai makanan yang saling berhubungan dalam suatu ekosistem."],
+  ["Joule", "Satuan energi, disingkat J."],
+  ["Kalor", "Energi panas yang berpindah dari benda bersuhu tinggi ke benda bersuhu lebih rendah."],
+  ["Kamuflase", "Penyesuaian warna atau bentuk tubuh agar menyerupai lingkungan sehingga sulit terlihat pemangsa."],
+  ["Karnivora", "Hewan pemakan daging, misalnya harimau dan elang."],
+  ["Kertas lakmus", "Kertas indikator yang berubah warna: biru menjadi merah dalam asam, merah menjadi biru dalam basa."],
+  ["Klorofil", "Zat hijau pada tumbuhan yang membantu menangkap cahaya matahari untuk fotosintesis."],
+  ["Komensalisme", "Hubungan dua makhluk hidup yang menguntungkan satu pihak, sedangkan pihak lain tidak dirugikan dan tidak diuntungkan."],
+  ["Kompetisi", "Persaingan antar makhluk hidup memperebutkan makanan, air, tempat tinggal, atau cahaya."],
+  ["Komunitas", "Gabungan beberapa populasi berbeda jenis yang hidup di tempat yang sama."],
+  ["Konduksi", "Perpindahan kalor melalui zat padat tanpa disertai perpindahan bagian-bagian zatnya."],
+  ["Konduktor", "Bahan yang mudah menghantarkan panas atau listrik, misalnya logam."],
+  ["Konsumen", "Makhluk hidup yang tidak dapat membuat makanan sendiri dan memperoleh makanan dengan memakan makhluk hidup lain."],
+  ["Konveksi", "Perpindahan kalor melalui zat cair atau gas yang disertai perpindahan bagian zat tersebut."],
+  ["Kromatografi", "Cara memisahkan zat, misalnya warna tinta, berdasarkan kecepatan merambat pada kertas atau bahan penyerap."],
+  ["Langka", "Jumlahnya sangat sedikit di alam sehingga terancam punah."],
+  ["Larutan", "Campuran homogen yang terbentuk ketika suatu zat terlarut dalam zat lain, misalnya air gula."],
+  ["LED", "Jenis lampu hemat energi yang mengubah lebih banyak listrik menjadi cahaya dan lebih sedikit menjadi panas."],
+  ["Lumut", "Tumbuhan kecil tak berbiji yang hidup di tempat lembap, misalnya di dinding atau batu."],
+  ["Magnet", "Benda yang dapat menarik besi dan baja, dipakai misalnya untuk memisahkan paku dari pasir."],
+  ["Massa", "Banyaknya zat yang terkandung dalam suatu benda, diukur dengan neraca dalam satuan gram atau kilogram."],
+  ["Massa jenis", "Perbandingan massa dengan volume suatu zat. Menentukan benda mengapung atau tenggelam di air."],
+  ["Materi", "Sebutan lain untuk zat, yaitu segala sesuatu yang menempati ruang dan memiliki massa."],
+  ["Membeku", "Perubahan wujud dari cair menjadi padat. Zat melepaskan kalor."],
+  ["Mencair", "Perubahan wujud dari padat menjadi cair. Zat menyerap kalor."],
+  ["Mengembun", "Perubahan wujud dari gas menjadi cair. Zat melepaskan kalor."],
+  ["Mengkristal", "Perubahan wujud dari gas langsung menjadi padat, misalnya terbentuknya bunga es di freezer."],
+  ["Menguap", "Perubahan wujud dari cair menjadi gas. Zat menyerap kalor."],
+  ["Menyublim", "Perubahan wujud dari padat langsung menjadi gas, misalnya kapur barus yang mengecil."],
+  ["Mikroorganisme", "Makhluk hidup yang sangat kecil dan hanya terlihat dengan mikroskop, misalnya bakteri dan protozoa."],
+  ["Minyak bumi", "Bahan bakar fosil berwujud cair, bahan pembuat bensin, solar, dan minyak tanah."],
+  ["Mutualisme", "Hubungan dua makhluk hidup yang saling menguntungkan, misalnya lebah dan bunga."],
+  ["Neraca", "Alat untuk mengukur massa benda."],
+  ["Netral", "Sifat zat yang tidak asam dan tidak basa, misalnya air murni."],
+  ["Omnivora", "Hewan pemakan tumbuhan sekaligus daging, misalnya ayam dan tikus."],
+  ["Padat", "Wujud zat yang bentuk dan volumenya tetap, misalnya batu dan kayu."],
+  ["Panas bumi", "Energi panas dari dalam bumi yang dipakai untuk memutar turbin pembangkit listrik."],
+  ["Panel surya", "Alat yang mengubah energi cahaya matahari menjadi energi listrik."],
+  ["Parasitisme", "Hubungan dua makhluk hidup yang menguntungkan satu pihak (parasit) dan merugikan pihak lain (inang)."],
+  ["Partikel", "Bagian-bagian sangat kecil penyusun zat yang tidak dapat dilihat dengan mata."],
+  ["Pelarut", "Zat yang melarutkan zat lain dalam sebuah larutan, misalnya air pada air gula."],
+  ["Pelestarian", "Usaha menjaga dan melindungi lingkungan serta makhluk hidup agar tidak rusak atau punah."],
+  ["Pemanasan global", "Naiknya suhu rata-rata bumi akibat bertambahnya gas rumah kaca di atmosfer."],
+  ["Pemantulan", "Peristiwa cahaya atau bunyi memantul ketika mengenai suatu permukaan."],
+  ["Pembiasan", "Pembelokan arah cahaya ketika melewati dua zat bening yang berbeda, misalnya dari udara ke air."],
+  ["Penangkaran", "Pengembangbiakan hewan atau tumbuhan langka di tempat yang aman dan terkendali."],
+  ["Pencemaran", "Masuknya zat berbahaya ke udara, air, atau tanah sehingga lingkungan menjadi rusak."],
+  ["Pengawet", "Zat tambahan makanan yang mencegah makanan cepat busuk atau basi."],
+  ["Pengayakan", "Cara memisahkan butiran padat berdasarkan ukurannya memakai ayakan."],
+  ["Penguapan", "Cara memisahkan zat padat terlarut dari cairan dengan menguapkan cairannya, misalnya membuat garam dari air laut."],
+  ["Pengurai", "Makhluk hidup, seperti bakteri dan jamur, yang menguraikan sisa makhluk mati menjadi zat hara."],
+  ["Penyaringan", "Cara memisahkan padatan yang tidak larut dari cairan memakai saringan."],
+  ["Penyulingan", "Cara memisahkan cairan berdasarkan perbedaan titik didih dengan memanaskan lalu mengembunkan uapnya."],
+  ["Perubahan energi", "Berubahnya satu bentuk energi menjadi bentuk energi lain."],
+  ["Perubahan fisika", "Perubahan zat yang tidak menghasilkan zat baru, misalnya es mencair."],
+  ["Perubahan kimia", "Perubahan zat yang menghasilkan zat baru dengan sifat berbeda, misalnya kertas terbakar."],
+  ["Piramida makanan", "Gambaran jumlah makhluk hidup dan energi pada tiap tingkat makanan, dari produsen di dasar sampai konsumen puncak."],
+  ["PLTA", "Pembangkit Listrik Tenaga Air, yang memakai aliran air untuk memutar turbin penghasil listrik."],
+  ["PLTS", "Pembangkit Listrik Tenaga Surya, yang memakai panel surya untuk menghasilkan listrik."],
+  ["Populasi", "Sekelompok makhluk hidup sejenis yang hidup di suatu tempat."],
+  ["Predasi", "Hubungan antara pemangsa dan mangsanya, misalnya elang dan ayam."],
+  ["Presipitasi", "Turunnya air dari awan ke bumi dalam bentuk hujan, salju, atau es."],
+  ["Produsen", "Makhluk hidup yang dapat membuat makanannya sendiri, yaitu tumbuhan hijau."],
+  ["Protozoa", "Mikroorganisme bersel satu yang bergerak, misalnya amuba."],
+  ["Punah", "Keadaan ketika suatu jenis makhluk hidup sudah tidak ada lagi di bumi."],
+  ["Radiasi", "Perpindahan kalor tanpa zat perantara, misalnya panas matahari yang sampai ke bumi."],
+  ["Rangkaian paralel", "Rangkaian listrik dengan jalur bercabang sehingga tiap lampu dapat menyala sendiri."],
+  ["Rangkaian seri", "Rangkaian listrik dengan satu jalur sehingga bila satu lampu putus, semua lampu padam."],
+  ["Rangsangan", "Perubahan di lingkungan yang dapat ditanggapi oleh makhluk hidup, misalnya panas, cahaya, dan sentuhan."],
+  ["Rantai makanan", "Urutan makhluk hidup yang saling memakan dan dimakan, yang menunjukkan perpindahan energi."],
+  ["Reboisasi", "Penanaman kembali pohon di hutan yang gundul atau rusak."],
+  ["Recycle", "Mendaur ulang, yaitu mengolah sampah menjadi barang baru yang dapat dipakai lagi."],
+  ["Reduce", "Mengurangi, yaitu membatasi pemakaian barang yang menimbulkan sampah."],
+  ["Reuse", "Memakai ulang barang yang masih layak pakai untuk fungsi yang sama atau berbeda."],
+  ["Sabana", "Padang rumput luas dengan pohon yang jarang, misalnya di Nusa Tenggara Timur."],
+  ["Simbiosis", "Hubungan hidup berdekatan antara dua makhluk hidup yang berbeda jenis."],
+  ["Stomata", "Lubang-lubang kecil pada daun tempat tumbuhan bertukar udara dan menguapkan air."],
+  ["Suhu", "Ukuran derajat panas atau dinginnya suatu benda, diukur dengan termometer."],
+  ["Suspensi", "Campuran keruh yang zat padatnya mengendap jika didiamkan, misalnya air sungai berlumpur."],
+  ["Termometer", "Alat untuk mengukur suhu."],
+  ["Terumbu karang", "Kumpulan hewan karang di laut dangkal yang menjadi rumah bagi banyak ikan."],
+  ["Titik didih", "Suhu saat zat cair mendidih dan berubah menjadi gas. Air mendidih pada 100 °C."],
+  ["Tumbuh", "Bertambahnya ukuran atau jumlah sel makhluk hidup, sehingga makin besar atau berat."],
+  ["Tumbuhan", "Makhluk hidup berklorofil yang dapat membuat makanan sendiri melalui fotosintesis."],
+  ["Turbin", "Roda baling-baling yang berputar oleh air, uap, atau angin untuk menggerakkan generator."],
+  ["Usaha", "Kegiatan menggerakkan atau mengubah sesuatu yang membutuhkan energi."],
+  ["Vertebrata", "Hewan yang memiliki tulang belakang, misalnya ikan, katak, kadal, burung, dan mamalia."],
+  ["Volume", "Ruang yang ditempati suatu benda, diukur dalam mililiter, liter, atau sentimeter kubik."],
+  ["Zat", "Segala sesuatu yang menempati ruang dan memiliki massa."],
+  ["Zat aditif", "Bahan yang sengaja ditambahkan ke makanan untuk tujuan tertentu, misalnya pewarna, pemanis, dan pengawet."],
+  ["Zat terlarut", "Zat yang larut dalam pelarut pada sebuah larutan, misalnya gula pada air gula."]
+];
+(function () {
+  var BABS = [BAB1, BAB2, BAB3];
+  var root = document.getElementById('root');
+
+  /* ---------- Kamus istilah ---------- */
+  var GMAP = {};
+  GLOS.forEach(function (g) { GMAP[g[0].toLowerCase()] = { t: g[0], d: g[1] }; });
+
+  /* ---------- Penyimpanan progres ---------- */
+  var store = { read: {}, quiz: {} };
+  try {
+    var saved = JSON.parse(localStorage.getItem('ipas.v1'));
+    if (saved && saved.read && saved.quiz) store = saved;
+  } catch (e) {}
+  function save() { try { localStorage.setItem('ipas.v1', JSON.stringify(store)); } catch (e) {} }
+
+  /* ---------- Tema ---------- */
+  function applyTheme(t) { if (t) document.documentElement.setAttribute('data-theme', t); }
+  try { applyTheme(localStorage.getItem('ipas.theme')); } catch (e) {}
+  function isDark() {
+    var a = document.documentElement.getAttribute('data-theme');
+    if (a) return a === 'dark';
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  /* ---------- Utilitas ---------- */
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  var TERM_RE = /\{\{([^|}]+)(?:\|([^}]+))?\}\}/g;
+  function fmt(h) {
+    return h.replace(TERM_RE, function (m, t, k) {
+      return '<b class="t" tabindex="0" role="button" data-k="' + esc((k || t).toLowerCase()) + '">' + t + '</b>';
+    });
+  }
+  function words(h) {
+    return h.replace(/<[^>]+>/g, ' ').replace(TERM_RE, '$1').split(/\s+/).filter(Boolean).length;
+  }
+  function babMin(b) {
+    var n = 0;
+    b.subs.forEach(function (s) { n += words(s.c) + words(s.r); });
+    return Math.max(1, Math.round(n / 180));
+  }
+  function sid(b, i) { return b.no + '.' + (i + 1); }
+  function readCount(b) {
+    var c = 0;
+    b.subs.forEach(function (s, i) { if (store.read[sid(b, i)]) c++; });
+    return c;
+  }
+  function itemLabel(b, i) {
+    var n = b.subs.length;
+    if (i < n) return sid(b, i) + ' ' + b.subs[i].t;
+    if (i === n) return 'Rangkuman Bab ' + b.no;
+    return 'Kuis Bab ' + b.no;
+  }
+
+  /* ---------- Status tampilan ---------- */
+  var S = { view: 'home', bab: 0, item: 0, q: null };
+  var glQuery = '';
+
+  function go(view, bab, item) {
+    S.view = view;
+    if (bab !== undefined) S.bab = bab;
+    if (item !== undefined) S.item = item;
+    S.q = null;
+    hidePop();
+    render();
+    window.scrollTo(0, 0);
+    onScroll();
+  }
+
+  /* ---------- Kerangka halaman ---------- */
+  function header() {
+    return '<header class="hdr"><div class="hdr-in">' +
+      '<button class="brand" data-go="home"><span class="brand-mark" aria-hidden="true"></span>Belajar IPAS</button>' +
+      '<button class="nav-btn nav-home" data-go="home"' + (S.view === 'home' ? ' aria-current="page"' : '') + '>Beranda</button>' +
+      '<button class="nav-btn" data-go="glos"' + (S.view === 'glos' ? ' aria-current="page"' : '') + '>Glosarium</button>' +
+      '<button class="nav-btn" id="theme" aria-label="Ganti tema terang atau gelap">' + (isDark() ? 'Terang' : 'Gelap') + '</button>' +
+      '</div><div class="bar" role="progressbar" aria-label="Progres membaca" aria-valuemin="0" aria-valuemax="100"><i id="barfill"></i></div></header>';
+  }
+  function footer() {
+    return '<footer class="ftr"><span>Belajar IPAS. Progresmu tersimpan di peramban ini.</span>' +
+      '<button id="reset">Hapus progres belajar</button></footer>';
+  }
+
+  function render() {
+    var body = '';
+    if (S.view === 'home') body = homeView();
+    else if (S.view === 'glos') body = glosView();
+    else body = babView();
+    root.innerHTML = header() + '<div class="wrap">' + body + footer() + '</div>';
+    if (S.view === 'bab') afterMain();
+  }
+
+  /* ---------- Beranda ---------- */
+  function nextUnread() {
+    for (var b = 0; b < BABS.length; b++) {
+      for (var i = 0; i < BABS[b].subs.length; i++) {
+        if (!store.read[sid(BABS[b], i)]) return { b: b, i: i, any: !(b === 0 && i === 0) };
+      }
+    }
+    return null;
+  }
+  function homeView() {
+    var nu = nextUnread();
+    var cta = '';
+    if (nu) {
+      var any = Object.keys(store.read).length > 0;
+      cta = '<button class="cta" data-open="' + nu.b + ',' + nu.i + '">' + (any ? 'Lanjutkan belajar' : 'Mulai belajar') + ': ' + esc(sid(BABS[nu.b], nu.i)) + ' ' + esc(BABS[nu.b].subs[nu.i].t) + '</button>';
+    } else {
+      cta = '<button class="cta" data-open="0,0">Baca ulang dari Bab 1</button>';
+    }
+    var cards = BABS.map(function (b, bi) {
+      var rc = readCount(b), tot = b.subs.length;
+      var q = store.quiz[b.no];
+      return '<button class="card" data-open="' + bi + ',0">' +
+        '<span class="no">Bab ' + b.no + '</span><h3>' + esc(b.judul) + '</h3><p>' + esc(b.desk) + '</p>' +
+        '<div class="meter" aria-hidden="true"><i style="width:' + Math.round(rc / tot * 100) + '%"></i></div>' +
+        '<div class="meta"><span>' + tot + ' sub-bab</span><span>sekitar ' + babMin(b) + ' menit baca</span></div>' +
+        '<div class="meta" style="margin-top:0;padding-top:0"><span>' + rc + ' dari ' + tot + ' sub-bab dibaca</span>' +
+        (q !== undefined ? '<span>Skor kuis terbaik: ' + q + ' dari ' + b.kuis.length + '</span>' : '<span>Kuis belum dikerjakan</span>') + '</div>' +
+        '</button>';
+    }).join('');
+    return '<section class="hero"><p class="eyebrow">IPAS · Ilmu Pengetahuan Alam dan Sosial</p>' +
+      '<h1>Belajar IPAS dengan tenang</h1>' +
+      '<p>Tiga bab tentang makhluk hidup, zat, dan energi. Bacalah pelan-pelan, coba percobaan kecilnya di rumah, lalu uji pemahamanmu lewat kuis di akhir setiap bab.</p>' +
+      cta + '</section>' +
+      '<section class="cards" aria-label="Daftar bab">' + cards + '</section>' +
+      '<section class="how">' +
+      '<div><h4>Baca satu sub-bab sekali duduk</h4><p>Setiap sub-bab pendek dan diakhiri rangkuman. Tanda centang muncul otomatis saat kamu selesai membacanya.</p></div>' +
+      '<div><h4>Klik kata yang bergaris titik</h4><p>Istilah penting dicetak tebal. Klik atau ketuk untuk melihat artinya tanpa pindah halaman.</p></div>' +
+      '<div><h4>Uji diri lewat kuis</h4><p>Delapan soal per bab. Jawabanmu langsung dibahas, jadi kamu belajar dari setiap soal.</p></div>' +
+      '</section>';
+  }
+
+  /* ---------- Halaman bab ---------- */
+  function tocList(b) {
+    var n = b.subs.length, out = '';
+    for (var i = 0; i < n + 2; i++) {
+      var cur = i === S.item ? ' aria-current="true"' : '';
+      var num = i < n ? sid(b, i) : '';
+      var ck = i < n ? '<span class="ck' + (store.read[sid(b, i)] ? ' on' : '') + '" data-ck="' + sid(b, i) + '" aria-hidden="true"></span>' : '';
+      var label = i < n ? b.subs[i].t : (i === n ? 'Rangkuman bab' : 'Kuis bab');
+      if (i === n) out += '<li class="toc-sep" aria-hidden="true"></li>';
+      out += '<li><button class="toc-i" data-open="' + S.bab + ',' + i + '"' + cur + '><span class="n">' + num + '</span><span>' + esc(label) + '</span>' + ck + '</button></li>';
+    }
+    return out;
+  }
+  function babView() {
+    var b = BABS[S.bab];
+    return '<details class="tocm" id="tocm"><summary><span>' + esc('Bab ' + b.no + ' · ' + itemLabel(b, S.item)) + '</span></summary><ol>' + tocList(b) + '</ol></details>' +
+      '<div class="layout"><nav class="toc" aria-label="Daftar isi bab"><p class="toc-h">Bab ' + b.no + '</p><p class="toc-t">' + esc(b.judul) + '</p><ol>' + tocList(b) + '</ol></nav>' +
+      '<main class="art" id="main">' + mainHTML() + '</main></div>';
+  }
+  function pager(b) {
+    var n = b.subs.length, i = S.item, prev = '', next = '';
+    if (i > 0) prev = '<button class="pg" data-open="' + S.bab + ',' + (i - 1) + '"><small>Sebelumnya</small><span>' + esc(itemLabel(b, i - 1)) + '</span></button>';
+    else if (S.bab > 0) { var pb = BABS[S.bab - 1]; prev = '<button class="pg" data-open="' + (S.bab - 1) + ',' + (pb.subs.length + 1) + '"><small>Sebelumnya</small><span>' + esc(itemLabel(pb, pb.subs.length + 1)) + '</span></button>'; }
+    if (i < n + 1) next = '<button class="pg nx" data-open="' + S.bab + ',' + (i + 1) + '"><small>Selanjutnya</small><span>' + esc(itemLabel(b, i + 1)) + '</span></button>';
+    else if (S.bab < BABS.length - 1) { var nb = BABS[S.bab + 1]; next = '<button class="pg nx" data-open="' + (S.bab + 1) + ',0"><small>Selanjutnya</small><span>' + esc('Bab ' + nb.no + ': ' + nb.judul) + '</span></button>'; }
+    else next = '<button class="pg nx" data-go="home"><small>Selesai</small><span>Kembali ke beranda</span></button>';
+    return '<div class="pager">' + (prev || '<span></span>') + next + '</div>';
+  }
+  function mainHTML() {
+    var b = BABS[S.bab], n = b.subs.length, i = S.item, h = '';
+    if (i < n) {
+      var s = b.subs[i];
+      h = '<p class="eyebrow">Bab ' + b.no + ' · Sub-bab ' + sid(b, i) + '</p><h1>' + esc(s.t) + '</h1>' + fmt(s.c) +
+        '<section class="rangkuman"><h3>Rangkuman</h3><p>' + fmt(s.r) + '</p></section>';
+    } else if (i === n) {
+      h = '<p class="eyebrow">Bab ' + b.no + '</p><h1>Rangkuman Bab</h1><ul>' + b.rb.map(function (x) { return '<li>' + fmt(x) + '</li>'; }).join('') + '</ul>' +
+        '<h3>Pertanyaan untuk direnungkan</h3><ol class="refl">' + b.rf.map(function (x) { return '<li>' + fmt(x) + '</li>'; }).join('') + '</ol>';
+    } else {
+      h = quizHTML(b);
+    }
+    return h + (i === n + 1 && S.q && S.q.started && !S.q.done ? '' : pager(b));
+  }
+  function updateMain() {
+    var m = document.getElementById('main');
+    if (m) m.innerHTML = mainHTML();
+  }
+  function afterMain() {
+    onScroll();
+    var b = BABS[S.bab];
+    if (S.item < b.subs.length) {
+      setTimeout(function () {
+        var h = document.documentElement;
+        if (h.scrollHeight - h.clientHeight <= 24) markRead(sid(b, S.item));
+      }, 700);
+    }
+  }
+  function markRead(id) {
+    if (store.read[id]) return;
+    store.read[id] = 1;
+    save();
+    var els = document.querySelectorAll('[data-ck="' + id + '"]');
+    for (var k = 0; k < els.length; k++) els[k].classList.add('on');
+  }
+
+  /* ---------- Kuis ---------- */
+  function quizHTML(b) {
+    if (!S.q || S.q.bab !== S.bab) S.q = { bab: S.bab, started: false, i: 0, score: 0, sel: null, done: false };
+    var q = S.q, tot = b.kuis.length;
+    if (!q.started) {
+      var best = store.quiz[b.no];
+      return '<p class="eyebrow">Bab ' + b.no + '</p><h1>Kuis Bab ' + b.no + '</h1>' +
+        '<p>' + tot + ' soal pilihan ganda tentang ' + esc(b.judul.toLowerCase()) + '. Setiap jawaban langsung diperiksa dan dibahas. Skor akhir muncul setelah soal terakhir.</p>' +
+        (best !== undefined ? '<p>Skor terbaikmu: <strong>' + best + ' dari ' + tot + '</strong>.</p>' : '') +
+        '<button class="btn" data-q="start">Mulai kuis</button>';
+    }
+    if (q.done) {
+      var pct = q.score / tot, msg;
+      if (pct === 1) msg = 'Sempurna! Kamu menguasai bab ini dengan sangat baik.';
+      else if (pct >= 0.75) msg = 'Bagus sekali! Sedikit lagi sempurna. Baca ulang sub-bab yang masih membingungkan.';
+      else if (pct >= 0.5) msg = 'Lumayan. Baca lagi sub-bab yang kamu rasa sulit, lalu coba kuisnya sekali lagi.';
+      else msg = 'Jangan berkecil hati. Baca ulang materinya pelan-pelan, lalu coba lagi. Belajar memang butuh waktu.';
+      var nextBtn = S.bab < BABS.length - 1
+        ? '<button class="btn" data-open="' + (S.bab + 1) + ',0">Lanjut ke Bab ' + BABS[S.bab + 1].no + '</button>'
+        : '<button class="btn" data-go="home">Kembali ke beranda</button>';
+      return '<p class="eyebrow">Hasil kuis Bab ' + b.no + '</p><h1>Skormu</h1><div class="score">' + q.score + ' <small>dari ' + tot + '</small></div><p>' + msg + '</p>' +
+        '<div class="btn-row"><button class="btn ghost" data-q="retry">Ulangi kuis</button>' + nextBtn + '</div>';
+    }
+    var it = b.kuis[q.i], letters = ['A', 'B', 'C', 'D', 'E'];
+    var opts = it.o.map(function (o, k) {
+      var cls = 'opt', dis = '';
+      if (q.sel !== null) {
+        dis = ' disabled';
+        if (k === it.a) cls += ' ok'; else if (k === q.sel) cls += ' bad';
+      }
+      return '<button class="' + cls + '" data-opt="' + k + '"' + dis + '><span class="l">' + letters[k] + '</span><span>' + fmt(o) + '</span></button>';
+    }).join('');
+    var fb = '';
+    if (q.sel !== null) {
+      var okk = q.sel === it.a;
+      fb = '<div class="fb ' + (okk ? 'ok' : 'bad') + '" id="fb"><strong>' + (okk ? 'Benar!' : 'Belum tepat. Jawaban yang benar: ' + letters[it.a] + '.') + '</strong>' + fmt(it.p) + '</div>' +
+        '<button class="btn" data-q="next">' + (q.i === tot - 1 ? 'Lihat skor' : 'Soal berikutnya') + '</button>';
+    }
+    return '<div class="qhead"><span>Soal ' + (q.i + 1) + ' dari ' + tot + '</span><span>Benar: ' + q.score + '</span></div>' +
+      '<div class="meter qmeter" aria-hidden="true"><i style="width:' + Math.round((q.i + (q.sel !== null ? 1 : 0)) / tot * 100) + '%"></i></div>' +
+      '<p class="qq">' + fmt(it.q) + '</p><div class="opts">' + opts + '</div>' + fb;
+  }
+  function quizAction(act, el) {
+    var b = BABS[S.bab], q = S.q;
+    if (act === 'start' || act === 'retry') {
+      S.q = { bab: S.bab, started: true, i: 0, score: 0, sel: null, done: false };
+      updateMain(); scrollMainTop();
+    } else if (act === 'opt') {
+      if (q.sel !== null) return;
+      q.sel = parseInt(el.getAttribute('data-opt'), 10);
+      if (q.sel === b.kuis[q.i].a) q.score++;
+      updateMain();
+      var fb = document.getElementById('fb');
+      if (fb) fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    } else if (act === 'next') {
+      if (q.i === b.kuis.length - 1) {
+        q.done = true;
+        if (store.quiz[b.no] === undefined || q.score > store.quiz[b.no]) { store.quiz[b.no] = q.score; save(); }
+      } else { q.i++; q.sel = null; }
+      updateMain(); scrollMainTop();
+    }
+  }
+  function scrollMainTop() {
+    var m = document.getElementById('main');
+    if (!m) return;
+    var y = m.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo(0, Math.max(0, y));
+  }
+
+  /* ---------- Glosarium ---------- */
+  var SORTED = GLOS.slice().sort(function (a, b) { return a[0].localeCompare(b[0], 'id'); });
+  function glList(q) {
+    q = q.trim().toLowerCase();
+    var list = SORTED.filter(function (g) { return !q || g[0].toLowerCase().indexOf(q) > -1 || g[1].toLowerCase().indexOf(q) > -1; });
+    if (!list.length) return '<p class="empty">Tidak ada istilah yang cocok dengan “' + esc(q) + '”. Coba kata lain.</p>';
+    var out = '', cur = '';
+    list.forEach(function (g) {
+      var L = g[0].charAt(0).toUpperCase();
+      if (L !== cur) {
+        if (cur) out += '</dl>';
+        cur = L; out += '<h2 class="gl-l" id="gl-' + L + '">' + L + '</h2><dl>';
+      }
+      out += '<div class="gl-e"><dt>' + esc(g[0]) + '</dt><dd>' + esc(g[1]) + '</dd></div>';
+    });
+    return out + '</dl>';
+  }
+  function glosView() {
+    var letters = {};
+    SORTED.forEach(function (g) { letters[g[0].charAt(0).toUpperCase()] = 1; });
+    var az = Object.keys(letters).map(function (L) { return '<button data-letter="' + L + '" aria-label="Loncat ke huruf ' + L + '">' + L + '</button>'; }).join('');
+    return '<section class="gl"><h1>Glosarium</h1><p>' + GLOS.length + ' istilah penting dari ketiga bab, diurutkan dari A sampai Z.</p>' +
+      '<label for="gq" class="eyebrow" style="display:block;margin-bottom:.4rem">Cari istilah</label>' +
+      '<input id="gq" class="search" type="search" placeholder="Ketik kata, misalnya “energi”" value="' + esc(glQuery) + '" autocomplete="off">' +
+      '<div class="az" id="az">' + az + '</div><div id="gl-list">' + glList(glQuery) + '</div></section>';
+  }
+
+  /* ---------- Popover istilah ---------- */
+  var pop = document.createElement('div');
+  pop.id = 'pop'; pop.hidden = true; pop.setAttribute('role', 'dialog');
+  document.body.appendChild(pop);
+  var popFor = null;
+  function hidePop() { pop.hidden = true; popFor = null; }
+  function showPop(el) {
+    var g = GMAP[el.getAttribute('data-k')];
+    if (!g) return;
+    if (popFor === el && !pop.hidden) { hidePop(); return; }
+    pop.innerHTML = '<strong>' + esc(g.t) + '</strong><p>' + esc(g.d) + '</p>';
+    pop.hidden = false;
+    var r = el.getBoundingClientRect(), pw = pop.offsetWidth, vw = document.documentElement.clientWidth;
+    var left = r.left + window.scrollX;
+    left = Math.min(left, window.scrollX + vw - pw - 16);
+    left = Math.max(left, window.scrollX + 16);
+    pop.style.left = left + 'px';
+    pop.style.top = (r.bottom + window.scrollY + 8) + 'px';
+    popFor = el;
+  }
+
+  /* ---------- Progres membaca ---------- */
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 1;
+    var f = document.getElementById('barfill');
+    if (f) {
+      f.style.width = (p * 100) + '%';
+      if (f.parentNode) f.parentNode.setAttribute('aria-valuenow', String(Math.round(p * 100)));
+    }
+    if (S.view === 'bab' && S.item < BABS[S.bab].subs.length && p >= 0.85 && max > 24) markRead(sid(BABS[S.bab], S.item));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+
+  /* ---------- Peristiwa ---------- */
+  var resetTimer = null;
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    var term = t.closest && t.closest('b.t');
+    if (term) { showPop(term); return; }
+    if (!(t.closest && t.closest('#pop'))) hidePop();
+
+    var el = t.closest && t.closest('[data-go],[data-open],[data-q],[data-opt],[data-letter],#theme,#reset');
+    if (!el) return;
+    if (el.id === 'theme') {
+      var nt = isDark() ? 'light' : 'dark';
+      applyTheme(nt);
+      try { localStorage.setItem('ipas.theme', nt); } catch (er) {}
+      el.textContent = isDark() ? 'Terang' : 'Gelap';
+      return;
+    }
+    if (el.id === 'reset') {
+      if (el.getAttribute('data-armed')) {
+        clearTimeout(resetTimer);
+        store = { read: {}, quiz: {} }; save();
+        go('home');
+      } else {
+        el.setAttribute('data-armed', '1');
+        el.textContent = 'Klik sekali lagi untuk menghapus';
+        resetTimer = setTimeout(function () { el.removeAttribute('data-armed'); el.textContent = 'Hapus progres belajar'; }, 4000);
+      }
+      return;
+    }
+    if (el.hasAttribute('data-letter')) {
+      var tg = document.getElementById('gl-' + el.getAttribute('data-letter'));
+      if (tg) tg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    if (el.hasAttribute('data-opt')) { quizAction('opt', el); return; }
+    if (el.hasAttribute('data-q')) { quizAction(el.getAttribute('data-q'), el); return; }
+    if (el.hasAttribute('data-go')) { go(el.getAttribute('data-go') === 'glos' ? 'glos' : 'home'); return; }
+    if (el.hasAttribute('data-open')) {
+      var parts = el.getAttribute('data-open').split(',');
+      var nb = parseInt(parts[0], 10), ni = parseInt(parts[1], 10);
+      if (S.view === 'bab' && S.item < BABS[S.bab].subs.length && (el.className.indexOf('pg') > -1)) markRead(sid(BABS[S.bab], S.item));
+      go('bab', nb, ni);
+    }
+  });
+  document.addEventListener('input', function (e) {
+    if (e.target && e.target.id === 'gq') {
+      glQuery = e.target.value;
+      var l = document.getElementById('gl-list');
+      if (l) l.innerHTML = glList(glQuery);
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') hidePop();
+    if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList && e.target.classList.contains('t')) {
+      e.preventDefault(); showPop(e.target);
+    }
+  });
+
+  render();
+  onScroll();
+})();
+
+</script>
+
+</body></html>
